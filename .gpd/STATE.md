@@ -61,6 +61,7 @@ Phase 3 review and revision artifacts were produced; no active calculations are 
 - [Phase quick-001]: Quick task 001: draft summary and theorem-name audit — Ad-hoc review completed outside planned phases
 - [Phase quick-002]: Quick task 002: dominant-error citation and proof-gap path normalization — Patched the manuscript to cite falcon512_dominant_error explicitly and aligned paper-package proof-gap references to the requested formal path convention
 - [Phase 3]: Internal peer review required major revision on auditability and positioning, and the revised manuscript now closes the review blocker set while preserving the no-attack boundary.
+- [Phase quick-3]: Quick task 3: reviewed unstaged GPD metadata changes, removed backup artifact, and committed the cleanup — Ad-hoc housekeeping completed outside planned phases
 
 ### Active Approximations
 

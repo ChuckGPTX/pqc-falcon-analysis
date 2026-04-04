@@ -860,8 +860,8 @@
     "The existing Lean artifacts identify 12 machine-checked proof gaps with GAP 7 and GAP 10 as the dominant concrete-security findings.",
     "The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.",
     "Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim.",
-    "Phase 3 produced a full staged internal review dossier with a major_revision outcome and a matching author-response package.",
-    "The revised manuscript now uses the actual artifacts/aristotle-proof-gap-analysis/... paths, includes Lean 4 and mathlib citations, and exposes a theorem-to-source mapping table."
+    "Phase 3 produced a full staged internal review dossier with a `major_revision` decision that was then answered in `.gpd/AUTHOR-RESPONSE.md` and `.gpd/paper/REFEREE_RESPONSE.md`.",
+    "The revised manuscript now uses the actual `artifacts/aristotle-proof-gap-analysis/...` paths, adds Lean 4 and mathlib citations, and includes a theorem-to-source mapping table."
   ],
   "open_questions": [
     "Should the surrogate hardware-noise section remain in the main text for the ePrint version or move fully to an appendix in the venue-targeted revision?",
@@ -921,8 +921,13 @@
     },
     {
       "phase": "3",
-      "summary": "Executed Phase 3 internal peer review and closed the blocker set in the revised manuscript package.",
-      "rationale": "The staged review identified auditability and positioning blockers; the revised draft now uses the actual proof-gap paths, adds Lean/mathlib citations, tightens the twelve-gap anchors, and records the response trail."
+      "summary": "Internal peer review required major revision on auditability and positioning, and the revised manuscript now closes the review blocker set while preserving the no-attack boundary.",
+      "rationale": null
+    },
+    {
+      "phase": "quick-3",
+      "summary": "Quick task 3: reviewed unstaged GPD metadata changes, removed backup artifact, and committed the cleanup",
+      "rationale": "Ad-hoc housekeeping completed outside planned phases"
     }
   ],
   "approximations": [],
@@ -952,7 +957,7 @@
     "Rotate the IBM Quantum token in the IBM account because it was previously embedded in the notebook and script."
   ],
   "blockers": [
-    "Phase 4 still needs a LaTeX-capable environment for build validation and submission packaging."
+    "The exact placement of the surrogate hardware-noise section is still unsettled."
   ],
   "session": {
     "last_date": "2026-04-04",
@@ -960,5 +965,5 @@
     "resume_file": "`.gpd/ROADMAP.md`"
   },
   "_version": 1,
-  "_synced_at": "2026-04-04T21:53:53.899210+00:00"
+  "_synced_at": "2026-04-04T22:41:35.983559+00:00"
 }
