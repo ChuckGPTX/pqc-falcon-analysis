@@ -28,7 +28,7 @@ Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a 
 
 - **User-stated observables:** The evidence tags `measured`, `modeled`, `proved in surrogate model`, and `unsupported`.
 - **User-stated deliverables:** Claim ledger, assumption chain, literature cross-check, and recommendation note.
-- **Must-have references / prior outputs:** `quantum_pqc__blockchain_research.py`, `bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md`, `job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md`, Falcon spec, NIST PQC status page, and ECC resource-estimate literature.
+- **Must-have references / prior outputs:** `quantum_pqc__blockchain_research.py`, `artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md`, `artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md`, Falcon spec, NIST PQC status page, and ECC resource-estimate literature.
 - **Stop / rethink conditions:** If no primary source supports the Grover-to-sampler bridge, retire or sharply narrow the direct Falcon-security narrative.
 
 ### Scope Boundaries
@@ -53,11 +53,11 @@ Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a 
   - Why it matters: Contains the measured IBM result and the strongest local narrative claims.
   - Carry forward: planning, verification, writing
   - Required action: read, compare, cite
-- **ref-local-gap-report**: `job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md`
+- **ref-local-gap-report**: `artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md`
   - Why it matters: Documents the local Lean proof-gap analysis.
   - Carry forward: planning, verification, writing
   - Required action: read, compare, cite
-- **ref-local-heron-summary**: `bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md`
+- **ref-local-heron-summary**: `artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md`
   - Why it matters: Documents the local noisy-sampler surrogate model.
   - Carry forward: planning, verification, writing
   - Required action: read, compare, cite
@@ -76,8 +76,8 @@ Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a 
 
 ### Carry-Forward Inputs
 
-- The raw IBM job output in `job-d786n93c6das739hh5m0/job-d786n93c6das739hh5m0-result.json`.
-- The local Grover plot `grover_results.png`.
+- The raw IBM job output in `artifacts/ibm-heron-job/job-d786n93c6das739hh5m0-result.json`.
+- The local Grover plot `docs/images/grover-results.png`.
 - The local Aristotle summaries and Lean sources.
 
 ### Skeptical Review

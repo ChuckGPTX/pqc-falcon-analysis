@@ -51,13 +51,13 @@ The spec explicitly discusses fast Fourier sampling and floating-point precision
 
 ### Local Lean Gap-Analysis Layer
 
-`job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md` summarizes a Lean 4 project that formalizes several explicit Falcon proof-gap statements. Its main theorem is a surrogate decomposition of forging advantage into `Q_H * epsilon_SIS` plus several explicit `delta_*` terms.
+`artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md` summarizes a Lean 4 project that formalizes several explicit Falcon proof-gap statements. Its main theorem is a surrogate decomposition of forging advantage into `Q_H * epsilon_SIS` plus several explicit `delta_*` terms.
 
 This layer is formal mathematics about a chosen model. It does not by itself instantiate a deployed Falcon attack.
 
 ### Local Noisy-Sampler Layer
 
-`bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md` defines another surrogate model:
+`artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md` defines another surrogate model:
 
 - sampler distance `delta`
 - reduction bound `epsilon_forge <= epsilon_lattice + q_sign * epsilon_sampler`

@@ -97,10 +97,13 @@ axes[1].legend(facecolor='#2a2a2a', edgecolor='#444', labelcolor='white', fontsi
 axes[1].set_xlim(0, 1400)
 axes[1].set_ylim(1e-8, 1.5)
 
+figure_path = os.path.join('docs', 'images', 'grover-results.png')
+os.makedirs(os.path.dirname(figure_path), exist_ok=True)
+
 plt.tight_layout()
-plt.savefig('grover_results.png', dpi=150, bbox_inches='tight', facecolor='#0f0f0f')
+plt.savefig(figure_path, dpi=150, bbox_inches='tight', facecolor='#0f0f0f')
 plt.show()
-print("✓ Saved: grover_results.png")
+print(f"✓ Saved: {figure_path}")
 
 from qiskit_ibm_runtime import QiskitRuntimeService
 
@@ -130,7 +133,7 @@ import os
 os.makedirs(folder, exist_ok=True)
 
 # Copy plot
-shutil.copy('grover_results.png', f'{folder}/grover_results_ibm_heron_r2.png')
+shutil.copy(figure_path, f'{folder}/grover_results_ibm_heron_r2.png')
 
 # Save all results as a research record
 record = {

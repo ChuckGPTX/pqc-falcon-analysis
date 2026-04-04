@@ -92,11 +92,11 @@ Requirements: [AUDT-01, AUDT-02, LITR-01, LITR-02, NOTE-01, VALD-01, VALD-02, VA
   - Why it matters: main empirical and narrative source
   - Carry forward: planning, execution, verification, writing
   - Required action: read, compare, cite
-- `bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_...md`
+- `artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_...md`
   - Why it matters: local noisy-sampler surrogate result
   - Carry forward: planning, execution, verification, writing
   - Required action: read, compare, cite
-- `job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md`
+- `artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md`
   - Why it matters: local Falcon proof-gap surrogate result
   - Carry forward: planning, execution, verification, writing
   - Required action: read, compare, cite

@@ -4,7 +4,7 @@
 
 ### Empirical Checks
 
-- The IBM job result container exists locally in `job-d786n93c6das739hh5m0/job-d786n93c6das739hh5m0-result.json`.
+- The IBM job result container exists locally in `artifacts/ibm-heron-job/job-d786n93c6das739hh5m0-result.json`.
 - The local script computes `p_hardware` directly from the recovered counts.
 - The plotted state-probability panel is consistent with the local count distribution.
 

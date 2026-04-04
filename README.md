@@ -2,15 +2,28 @@
 
 A source-grounded audit of claims connecting a small IBM Heron Grover experiment to Falcon/FN-DSA and ECDSA security language.
 
-## Executive Summary
+<p align="center">
+  <img src="docs/images/grover-results.png" alt="IBM Heron Grover benchmark and extrapolation figure" width="920">
+</p>
 
-This repository combines three distinct layers of work:
+## At A Glance
 
-1. A real 3-qubit Grover run recovered from IBM hardware.
-2. Local analytical and formal follow-on artifacts, including Aristotle / Lean outputs.
-3. A structured claim audit that checks which higher-level cryptographic conclusions are actually supported.
+| Area | Current read |
+| --- | --- |
+| Measured result | A recovered 3-qubit IBM Heron Grover run with target-state probability `p_hardware = 0.7461` |
+| Formal follow-on work | Two local Aristotle / Lean artifact sets that stress-test proof and sampler assumptions |
+| Main verdict | The hardware demo is real, but the strongest Falcon / ECDSA security headlines require unsupported bridge assumptions |
+| Best public framing | Small hardware benchmark + rigorous claim audit, not a direct attack claim |
 
-The current repository conclusion is deliberately conservative: the hardware result is real, but the strongest Falcon and ECDSA attack-language claims require unsupported bridge assumptions. The clean, defensible story is a small hardware benchmark plus a methodology lesson about how quickly narrative claims can outrun their anchors.
+## Why This Repository Exists
+
+This project collects three layers of work in one place:
+
+1. A real IBM hardware benchmark.
+2. Local analytical and formal follow-on artifacts.
+3. A structured audit of which higher-level cryptographic conclusions are actually supported.
+
+The key contribution is not just the measurement. It is the separation of measured facts, local models, surrogate proofs, and unsupported narrative jumps into a reviewable evidence trail.
 
 ## Start Here
 
@@ -23,20 +36,25 @@ The current repository conclusion is deliberately conservative: the hardware res
 
 ## Repository Layout
 
-- `.gpd/`
-  Research-management, planning, literature, verification, and final audit outputs.
-- `quantum_pqc__blockchain_research.py`
-  Scripted recovery and visualization of the local IBM Grover result.
-- `QUANTUM_PQC__Blockchain_Research.ipynb`
-  Notebook version of the local analysis workflow.
-- `job-d786n93c6das739hh5m0/`
-  Raw IBM job metadata and result payload.
-- `job-d786n93c6das739hh5m0-result_aristotle/`
-  Aristotle-generated analysis, Lean project scaffold, and summary artifacts tied to the Grover job.
-- `bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/`
-  Earlier Aristotle / Lean surrogate-model artifact set referenced by the audit.
-- `grover_results.png`
-  Plot exported from the local Grover analysis.
+```text
+pqc-falcon-analysis/
+├── README.md
+├── ARTIFACTS.md
+├── requirements.txt
+├── quantum_pqc__blockchain_research.py
+├── QUANTUM_PQC__Blockchain_Research.ipynb
+├── docs/
+│   └── images/
+│       └── grover-results.png
+├── artifacts/
+│   ├── ibm-heron-job/
+│   ├── aristotle-proof-gap-analysis/
+│   └── aristotle-surrogate-model/
+└── .gpd/
+    ├── literature/
+    ├── phases/
+    └── research-map/
+```
 
 ## Key Findings
 
@@ -62,7 +80,7 @@ export IBM_QUANTUM_TOKEN='your-token-here'
 python quantum_pqc__blockchain_research.py
 ```
 
-The notebook contains the same logic in interactive form.
+The notebook contains the same logic in interactive form. The exported figure is written to `docs/images/grover-results.png`, which keeps the README preview in sync with the tracked artifact.
 
 ## Security Note
 
@@ -70,4 +88,4 @@ A previously embedded IBM Quantum token has been removed from the script and not
 
 ## Status
 
-This repository is organized as a claim-audit research record, not as a packaged software library. The most important outputs today are the audit artifacts and the primary-source cross-checks, rather than an installable application.
+This repository is organized as a research audit record rather than a packaged software library. The most important outputs today are the audit artifacts, primary-source cross-checks, and preserved source materials for the underlying claim chain.

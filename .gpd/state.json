@@ -36,15 +36,15 @@
       ],
       "must_include_prior_outputs": [
         "quantum_pqc__blockchain_research.py",
-        "bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
-        "job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md"
+        "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+        "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md"
       ],
       "user_asserted_anchors": [
         "Use the evidence tags measured, modeled, proved in surrogate model, and unsupported.",
         "Optimize for scientific credibility over preserving the current storyline."
       ],
       "known_good_baselines": [
-        "The raw IBM job result and derived target-state probability in `job-d786n93c6das739hh5m0/job-d786n93c6das739hh5m0-result.json`.",
+        "The raw IBM job result and derived target-state probability in `artifacts/ibm-heron-job/job-d786n93c6das739hh5m0-result.json`.",
         "The local Lean artifacts prove statements only inside their stated surrogate models."
       ],
       "context_gaps": [
@@ -280,7 +280,7 @@
       {
         "id": "ref-local-gap-report",
         "kind": "prior_artifact",
-        "locator": "job-d786n93c6das739hh5m0-result_aristotle/ANALYSIS_REPORT.md",
+        "locator": "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
         "aliases": [
           "local-gap-report"
         ],
@@ -304,7 +304,7 @@
       {
         "id": "ref-local-heron-summary",
         "kind": "prior_artifact",
-        "locator": "bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+        "locator": "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
         "aliases": [
           "local-heron-vs-falcon-summary"
         ],

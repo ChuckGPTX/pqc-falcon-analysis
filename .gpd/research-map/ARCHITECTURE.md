@@ -15,7 +15,7 @@ Outputs:
 
 - count dictionary
 - printed summary statistics
-- plot file `grover_results.png`
+- plot file `docs/images/grover-results.png`
 
 ### 2. Classical Post-Processing
 
@@ -40,7 +40,7 @@ This second panel is purely modeled output built on the fitted `epsilon_gate` as
 
 ### 4. Local Formalization Track A
 
-`job-d786n93c6das739hh5m0-result_aristotle/RequestProject/Falcon/*.lean` contains a multi-file Lean project that formalizes a Falcon proof-gap decomposition.
+`artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/*.lean` contains a multi-file Lean project that formalizes a Falcon proof-gap decomposition.
 
 High-level modules:
 
@@ -53,7 +53,7 @@ High-level modules:
 
 ### 5. Local Formalization Track B
 
-`bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/RequestProject/FalconSecurity.lean` contains a second Lean project that uses the locally fitted `epsilon_gate` inside an abstract noisy-sampler model.
+`artifacts/aristotle-surrogate-model/RequestProject/FalconSecurity.lean` contains a second Lean project that uses the locally fitted `epsilon_gate` inside an abstract noisy-sampler model.
 
 ### 6. Audit Layer Added By GPD
 

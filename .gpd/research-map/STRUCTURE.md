@@ -6,14 +6,14 @@
 pqc-falcon-analysis/
 |- QUANTUM_PQC__Blockchain_Research.ipynb
 |- quantum_pqc__blockchain_research.py
-|- grover_results.png
-|- job-d786n93c6das739hh5m0/
+|- docs/images/grover-results.png
+|- artifacts/ibm-heron-job/
 |  |- job-d786n93c6das739hh5m0-info.json
 |  `- job-d786n93c6das739hh5m0-result.json
-|- bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/
+|- artifacts/aristotle-surrogate-model/
 |  |- ARISTOTLE_SUMMARY_....md
 |  `- RequestProject/FalconSecurity.lean
-|- job-d786n93c6das739hh5m0-result_aristotle/
+|- artifacts/aristotle-proof-gap-analysis/
 |  |- ANALYSIS_REPORT.md
 |  `- RequestProject/Falcon/*.lean
 `- .gpd/
@@ -25,13 +25,13 @@ pqc-falcon-analysis/
 
 - `QUANTUM_PQC__Blockchain_Research.ipynb`: notebook form of the IBM hardware recovery and plotting workflow.
 - `quantum_pqc__blockchain_research.py`: script form of the same workflow.
-- `job-d786n93c6das739hh5m0/*.json`: raw job metadata and result container.
-- `grover_results.png`: generated figure summarizing the local post-processing.
+- `artifacts/ibm-heron-job/*.json`: raw job metadata and result container.
+- `docs/images/grover-results.png`: generated figure summarizing the local post-processing.
 
 ### Local Formalization Layer
 
-- `bdd5cf21-667c-45e0-b84a-e323aea3f79a_aristotle/`: one Lean project focused on noisy-sampler reduction claims.
-- `job-d786n93c6das739hh5m0-result_aristotle/`: another Lean project focused on explicit Falcon proof gaps.
+- `artifacts/aristotle-surrogate-model/`: one Lean project focused on noisy-sampler reduction claims.
+- `artifacts/aristotle-proof-gap-analysis/`: another Lean project focused on explicit Falcon proof gaps.
 
 ### Added Projectization Layer
 
@@ -49,6 +49,6 @@ pqc-falcon-analysis/
 ## Dependency Graph
 
 1. IBM job JSON feeds the notebook and script.
-2. The script feeds `grover_results.png` and the local JSON-style research record language.
+2. The script feeds `docs/images/grover-results.png` and the local JSON-style research record language.
 3. The local script values are reused rhetorically inside Aristotle summary files.
 4. The GPD audit layer reads all of the above and adds source-grounded interpretation.
