@@ -44,6 +44,19 @@
     "latex_toolchain": "pdflatex unavailable in current environment",
     "network_access": "restricted during this review run"
   },
+  "build_validation_probe": {
+    "date": "2026-04-04",
+    "commands_checked": [
+      "command -v pdflatex",
+      "command -v latexmk",
+      "command -v tectonic"
+    ],
+    "results": {
+      "pdflatex": "unavailable",
+      "latexmk": "unavailable",
+      "tectonic": "unavailable"
+    }
+  },
   "input_data": [
     {
       "name": "proof-gap-analysis-report",
@@ -158,7 +171,7 @@
   "build_status": {
     "latex": {
       "status": "blocked_local",
-      "detail": "pdflatex is not installed in the current execution environment."
+      "detail": "No TeX engine was found during the Phase 4 build-validation probe (`pdflatex`, `latexmk`, and `tectonic` all unavailable)."
     },
     "proof_gap_lean_project": {
       "status": "present",

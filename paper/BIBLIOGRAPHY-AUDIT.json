@@ -1,6 +1,11 @@
 {
   "version": 1,
   "manuscript_path": "paper/main.tex",
+  "final_bibliography_strategy": {
+    "mode": "inline_bibliography_in_main_tex",
+    "status": "provisional_pending_clean_build",
+    "note": "The manuscript currently keeps its bibliography inline in paper/main.tex. Phase 4 treats this as the final flattened strategy only if a clean PDF build confirms there is no hidden bibliography dependency."
+  },
   "coverage": {
     "falcon_specification": {
       "status": "present",
@@ -59,5 +64,7 @@
     }
   ],
   "review_ready": true,
-  "reviewer_note": "The bibliography now covers the cryptographic backbone, the local artifact anchors, and the formal-methods stack named by the manuscript."
+  "submission_ready": false,
+  "reviewer_note": "The bibliography now covers the cryptographic backbone, the local artifact anchors, and the formal-methods stack named by the manuscript.",
+  "submission_blocker": "No TeX engine is available in the current environment, so the inline bibliography strategy has not yet been confirmed by a clean PDF build."
 }
