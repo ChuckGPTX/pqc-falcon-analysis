@@ -2,42 +2,44 @@
 
 ## Project Reference
 
-See: `.gpd/PROJECT.md` (updated 2026-04-03)
+See: `.gpd/PROJECT.md` (updated 2026-04-04)
 
-**Core research question:** Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a meaningful statement about FALCON-512/FN-DSA security reductions or ECDSA attack timelines, and which assumptions fail against the actual proof and deployment model?
-**Current focus:** Phase 1 complete - Claim Audit
+**Core research question:** What are the explicit, machine-checked proof gaps in FALCON-512's EUF-CMA security reduction, and what do they imply for concrete security parameter selection?
+**Current focus:** Phase 3 - Internal Peer Review
 
 **Convention Lock:**
-- Standard physics-sign convention fields are intentionally unset for this claim-audit project.
-- Active project conventions live in `.gpd/CONVENTIONS.md` and govern evidence tags, units, source hierarchy, and writing rules.
+- Standard physics-sign convention fields remain unset because this is a cryptography / formal-verification project rather than a field-theory derivation project.
+- Active project conventions live in `.gpd/CONVENTIONS.md` and govern evidence tags, theorem naming, unit statements, source hierarchy, and anti-overclaim writing rules.
 
 ## Current Position
 
-**Current Phase:** 1
-**Current Phase Name:** Claim Audit
-**Total Phases:** 1
-**Current Plan:** 2
-**Total Plans in Phase:** 2
-**Status:** Complete
-**Last Activity:** 2026-04-03
-**Last Activity Description:** Project initialized, mapped, planned, and first-pass claim audit executed
+**Current Phase:** 3
+**Current Phase Name:** Internal Peer Review
+**Total Phases:** 4
+**Current Plan:** 0
+**Total Plans in Phase:** 0
+**Status:** Ready to plan
+**Last Activity:** 2026-04-04
+**Last Activity Description:** Completed quick task 001: manuscript summary, gap coverage check, and theorem-name audit
 
-**Progress:** [██████████] 100%
+**Progress:** [█████░░░░░] 50%
 
 ## Active Calculations
 
-None.
+Phase 2 manuscript artifacts were produced; no active calculations are running.
 
 ## Intermediate Results
 
-- The local Grover run supports `p_hardware = 0.7461` for the 3-qubit target state.
-- The fitted `epsilon_gate = 0.00167` is a model quantity, not a directly measured hardware primitive.
-- The strongest local Falcon/ECDSA headlines require unsupported bridge steps and were downgraded accordingly.
+- `falcon_security_reduction` makes the EUF-CMA reduction error terms explicit.
+- The existing Lean artifacts identify 12 machine-checked proof gaps with GAP 7 and GAP 10 as the dominant concrete-security findings.
+- The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.
+- Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim.
 
 ## Open Questions
 
-- Is there any primary source that supports the Grover-to-Falcon sampler bridge?
-- Should the local ECDSA timeline plot be retired entirely or replaced with a published benchmark comparison?
+- Should the surrogate hardware-noise section stay in the main text or move to an appendix?
+- What exact title and abstract wording best balances the PQC and Lean / Mathlib audiences?
+- What is the cleanest reader-facing presentation of GAP 7 and GAP 10 without dropping the Renyi-divergence caveat?
 
 ## Performance Metrics
 
@@ -51,15 +53,19 @@ None.
 
 - [Phase 1] Evidence tags are locked: measured, modeled, proved in surrogate model, unsupported.
 - [Phase 1] Primary sources win over storyline convenience.
+- [Phase 2] The manuscript is centered on the Lean proof-gap formalization rather than the Grover / Heron benchmark.
+- [Phase 2] The surrogate hardware-noise work remains supporting context only and must preserve the no-attack boundary.
+- [Phase 2]: Executed Phase 2 and produced the first manuscript draft package. — The title/abstract, outline, figure-table plan, LaTeX draft, gap table, bibliography pass, and theorem-consistency pass now exist and shift the next bottleneck to internal peer review.
+- [Phase quick-001]: Quick task 001: draft summary and theorem-name audit — Ad-hoc review completed outside planned phases
 
 ### Active Approximations
 
-None recorded as accepted project assumptions; the audit instead catalogs and downgrades unsupported approximations.
+- Supporting surrogate-model results may appear in the manuscript only with their artificial deployment assumptions and explicit caveats intact.
 
 ### Propagated Uncertainties
 
-- The local `epsilon_gate` proxy inherits uncertainty from fitting one small-instance Grover result rather than a calibrated hardware error model.
-- Any Falcon/FN-DSA or ECDSA consequence inherits a dominant bridge uncertainty because no primary source anchors the Grover-to-sampler or Grover-to-resource hop.
+- Manuscript framing can still drift if the supporting hardware section outweighs the primary Lean contribution.
+- Concrete-security prose is sensitive to how GAP 7 and GAP 10 are translated from theorem language to reader-facing narrative.
 
 ### Pending Todos
 
@@ -67,10 +73,10 @@ None recorded as accepted project assumptions; the audit instead catalogs and do
 
 ### Blockers/Concerns
 
-- No primary anchor has yet been found for the Grover-to-sampler bridge.
+- The exact placement of the surrogate hardware-noise section is still unsettled.
 
 ## Session Continuity
 
-**Last session:** 2026-04-03
-**Stopped at:** Phase 1 complete - review recommendation and decide whether to add a follow-up phase
-**Resume file:** `.gpd/phases/01-claim-audit/01-recommendation.md`
+**Last session:** 2026-04-04
+**Stopped at:** Ready to start Phase 3 internal peer review on the new manuscript package
+**Resume file:** `.gpd/ROADMAP.md`

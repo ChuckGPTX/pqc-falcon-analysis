@@ -1,257 +1,629 @@
 {
-  "_version": 1,
-  "_synced_at": "2026-04-03T00:00:00Z",
   "project_reference": {
-    "project_md_updated": "2026-04-03",
-    "core_research_question": "Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a meaningful statement about FALCON-512/FN-DSA security reductions or ECDSA attack timelines, and which assumptions fail against the actual proof and deployment model?",
-    "current_focus": "Phase 1: Claim Audit"
+    "project_md_updated": null,
+    "core_research_question": "What are the explicit, machine-checked proof gaps in FALCON-512's EUF-CMA security reduction, and what do they imply for concrete security parameter selection?",
+    "current_focus": "Phase 3 - Internal Peer Review"
   },
   "project_contract": {
     "schema_version": 1,
     "scope": {
-      "question": "Which assumptions are required to turn a 3-qubit IBM Heron Grover result into a meaningful statement about FALCON-512/FN-DSA security reductions or ECDSA attack timelines, and which assumptions fail against the actual proof and deployment model?",
+      "question": "What are the explicit, machine-checked proof gaps in FALCON-512's EUF-CMA security reduction, and what do they imply for concrete security parameter selection?",
       "in_scope": [
-        "Audit the evidence chain inside the existing local folder.",
-        "Classify major statements as measured, modeled, proved in surrogate model, or unsupported.",
-        "Cross-check Falcon/FN-DSA claims against primary sources and date-qualified NIST status.",
-        "Cross-check attack-timeline claims against published quantum resource-estimate literature and vendor roadmap caveats.",
-        "Recommend whether to keep, narrow, or retire the current narrative."
+        "Write a 6-10 page manuscript centered on the Lean 4 formalization of the FALCON-512 EUF-CMA reduction and its 12 proved gaps.",
+        "Translate GAP 7 and GAP 10 into source-grounded concrete-security implications for parameter selection.",
+        "Use the completed Phase 1 claim audit as a framing constraint so the paper does not drift into unsupported hardware-to-attack rhetoric.",
+        "Produce the manuscript drafting, peer-review, and ePrint submission-preparation pipeline."
       ],
       "out_of_scope": [
-        "Constructing a practical forgery attack on deployed Falcon/FN-DSA.",
-        "Running a new IBM hardware experiment in this phase.",
-        "Extending the Lean formalization into a full cryptographic proof-development project.",
-        "Deriving a production-grade ECDSA timeline model from scratch."
+        "Constructing a practical Falcon forgery attack.",
+        "Claiming that IBM Heron noise breaks deployed Falcon.",
+        "Running a new IBM hardware experiment.",
+        "Extending the Lean development into a full end-to-end proof of FN-DSA security.",
+        "Building a fresh cryptanalytic resource estimator from scratch."
       ],
       "unresolved_questions": [
-        "Is there any primary source that justifies mapping a small-scale Grover success probability directly to Falcon sampler statistical distance?",
-        "Which benchmark should replace the local 1200-qubit ECDSA threshold heuristic if the current storyline is narrowed rather than retired?"
+        "Should the surrogate hardware-noise section stay in the main text or move to an appendix?",
+        "What exact title and abstract wording best balances the PQC audience and the Lean/Mathlib audience?"
       ]
     },
     "context_intake": {
       "must_read_refs": [
+        "ref-gap-report",
+        "ref-security-reduction",
+        "ref-rejection",
+        "ref-random-oracle",
+        "ref-surrogate-summary",
+        "ref-phase1-recommendation",
         "ref-falcon-spec",
-        "ref-nist-pqc",
-        "ref-roetteler-ecdsa"
+        "ref-bai-renyi",
+        "ref-prest-renyi"
       ],
       "must_include_prior_outputs": [
-        "quantum_pqc__blockchain_research.py",
-        "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
-        "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md"
+        ".gpd/phases/01-claim-audit/01-claim-ledger.md",
+        ".gpd/phases/01-claim-audit/01-assumption-chain.md",
+        ".gpd/phases/01-claim-audit/01-recommendation.md",
+        ".gpd/literature/pqc-falcon-claim-audit-REVIEW.md",
+        "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean",
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RejectionSampling.lean",
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RandomOracle.lean",
+        "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md"
       ],
       "user_asserted_anchors": [
-        "Use the evidence tags measured, modeled, proved in surrogate model, and unsupported.",
-        "Optimize for scientific credibility over preserving the current storyline."
+        "Primary contribution: Lean 4 formalization of 12 proof gaps in FALCON-512's EUF-CMA security reduction.",
+        "Critical findings: GAP 7 Renyi-to-TV square-root loss and GAP 10 ROM programming Q_H loss.",
+        "Main theorem: falcon_security_reduction with all error terms explicit.",
+        "Secondary contribution: supporting hardware-noise surrogate model with an explicit no-forgery-attack boundary.",
+        "Phase 1 claim audit is complete and must not be redone."
       ],
       "known_good_baselines": [
-        "The raw IBM job result and derived target-state probability in `artifacts/ibm-heron-job/job-d786n93c6das739hh5m0-result.json`.",
-        "The local Lean artifacts prove statements only inside their stated surrogate models."
+        "All stated Lean theorems compile without sorry.",
+        "Mathlib4 version is v4.28.0 in the existing artifacts.",
+        "The completed claim audit already narrowed the repository narrative away from deployed-system attack claims."
       ],
       "context_gaps": [
-        "No primary-source anchor is yet established for the Grover-to-Falcon sampler bridge.",
-        "The current local files do not contain a cited benchmark for the ECDSA timeline plot."
+        "The exact manuscript placement of the supporting surrogate hardware-noise section is still unsettled.",
+        "The paper title and abstract have not yet been fixed."
       ],
       "crucial_inputs": [
-        "The three load-bearing artifacts named in the user-approved claim-audit plan.",
-        "The local IBM job metadata and count distribution.",
-        "The user-approved deliverables: claim ledger, assumption chain, literature cross-check, and recommendation."
+        "User-stated deliverables: title and abstract, section outline, figure/table plan, first LaTeX draft, bibliography pass, theorem/notation consistency pass.",
+        "The existing Lean theorem names and error-term notation must stay recognizable in the manuscript.",
+        "The Grover/Heron benchmark is supporting context only and cannot become the paper headline."
       ]
     },
     "approach_policy": {
       "formulations": [
-        "Use a claim-audit workflow that separates measured facts from extrapolated models and surrogate proofs.",
-        "Treat local Lean results as statements about explicit formal models, not as automatic claims about deployed cryptosystems."
+        "Paper-first framing with the Lean proof-gap formalization as the main narrative.",
+        "Use the completed claim audit as a scope guardrail rather than as the paper's main result.",
+        "Treat the supporting Grover/Heron surrogate model as a cautionary toy-model stress test."
       ],
       "allowed_estimator_families": [
-        "Claim-ledger classification anchored to source files and primary literature.",
-        "Assumption-chain analysis with explicit downgrade points for unsupported hops.",
-        "Date-qualified comparison against official standards pages and published resource-estimate papers."
+        "Exact theorem and error-term tracing from the Lean files into manuscript prose.",
+        "Concrete-security interpretation grounded in the gap report and Falcon-spec Renyi framing.",
+        "Section-level framing that distinguishes main formal results from supporting surrogate-model context."
       ],
       "forbidden_estimator_families": [
-        "A one-parameter gate-error extrapolation used as if it were a proof of Falcon insecurity.",
-        "A qubit-count threshold heuristic used as if it were a literature-grounded ECDSA attack timeline."
+        "Exploit-first rhetoric that presents the supporting surrogate model as a real Falcon break.",
+        "Hardware-first framing that turns the 3-qubit Grover benchmark into the paper's main contribution.",
+        "Loose restatement of theorem bounds that drops explicit error terms or query factors."
       ],
       "allowed_fit_families": [
-        "Order-of-magnitude comparison to published cryptanalytic resource estimates with explicit caveats."
+        "A manuscript structure built around theorem statement, gap taxonomy, concrete-security interpretation, supporting cautionary section, and conclusion."
       ],
       "forbidden_fit_families": [
-        "Headline-first extrapolation that ignores deployment model mismatch and missing anchors."
+        "A storyline that depends on the unsupported Grover-to-Falcon bridge.",
+        "Undated or overstated wording about deployment impact or standards status."
       ],
       "stop_and_rethink_conditions": [
-        "If no primary source supports the Grover-to-sampler bridge, retire or sharply narrow the direct Falcon-security narrative.",
-        "If the official NIST status contradicts the wording used in the local artifacts, rewrite the standards-status language with exact dates."
+        "If the title, abstract, or conclusion imply a deployed Falcon exploit, stop and rewrite.",
+        "If theorem names, gap counts, or concrete-security numbers drift from the Lean artifacts, stop for a consistency pass before continuing.",
+        "If the supporting hardware section starts to outweigh the main Lean contribution, re-scope the draft structure."
       ]
     },
     "observables": [
       {
-        "id": "obs_target_prob",
-        "name": "Measured target-state probability",
+        "id": "obs-main-theorem",
+        "name": "Explicit EUF-CMA reduction bound",
+        "kind": "proof_obligation",
+        "definition": "Machine-checked theorem falcon_security_reduction exposing Q_H * epsilon_SIS + delta_rej + delta_fp + delta_smooth + delta_hash + Q_S * delta_abort.",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-gap-taxonomy",
+        "name": "Twelve machine-checked proof gaps",
+        "kind": "classification",
+        "definition": "Complete severity-tagged taxonomy of the 12 proved gaps in the FALCON-512 security reduction.",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-gap7-loss",
+        "name": "GAP 7 concrete loss",
         "kind": "scalar",
-        "definition": "The observed probability of target state 101 in the 3-qubit IBM Heron Grover run.",
-        "units": "dimensionless"
+        "definition": "Naive Renyi-to-total-variation conversion degrades the 2^-64 scale to about 2^-32 in the stated formal path.",
+        "regime": null,
+        "units": "bits"
       },
       {
-        "id": "obs_claim_tags",
-        "name": "Claim evidence tags",
-        "kind": "classification",
-        "definition": "Per-claim classification as measured, modeled, proved in surrogate model, or unsupported."
+        "id": "obs-gap10-loss",
+        "name": "GAP 10 hardness implication",
+        "kind": "scalar",
+        "definition": "The ROM Q_H loss implies an underlying NTRU-SIS hardness target of roughly 192 bits to support 128-bit forgery security in the stated model.",
+        "regime": null,
+        "units": "bits"
       },
       {
-        "id": "obs_bridge_tags",
-        "name": "Assumption-chain support tags",
+        "id": "obs-supporting-boundary",
+        "name": "Surrogate-model framing boundary",
         "kind": "classification",
-        "definition": "Per-hop classification of whether the bridge from Grover data to cryptographic consequence is source-grounded or modeling-only."
+        "definition": "Whether the Grover/Heron and noisy-sampler results are presented strictly as supporting toy-model cautionary evidence rather than as deployed-system attack claims.",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-phase2-package",
+        "name": "Phase 2 manuscript package completeness",
+        "kind": "classification",
+        "definition": "Whether the title, abstract, outline, figure/table plan, first LaTeX draft, bibliography pass, and theorem/notation consistency pass all exist and align.",
+        "regime": null,
+        "units": null
+      },
+      {
+        "id": "obs-publication-readiness",
+        "name": "Publication readiness",
+        "kind": "classification",
+        "definition": "Whether the manuscript has passed internal peer review and ePrint packaging checks.",
+        "regime": null,
+        "units": null
       }
     ],
     "claims": [
       {
-        "id": "claim-ledger",
-        "statement": "All major statements in the three load-bearing local artifacts are classified with an evidence tag and source.",
+        "id": "claim-main-theorem",
+        "statement": "The manuscript centers the machine-checked FALCON-512 EUF-CMA reduction theorem with all error terms explicit and faithful to the Lean sources.",
         "observables": [
-          "obs_claim_tags"
+          "obs-main-theorem"
         ],
         "deliverables": [
-          "deliv-ledger"
+          "deliv-paper-draft",
+          "deliv-outline"
         ],
         "acceptance_tests": [
-          "test-ledger-coverage"
+          "test-theorem-consistency"
         ],
         "references": [
-          "ref-local-script",
-          "ref-local-gap-report",
-          "ref-local-heron-summary"
+          "ref-gap-report",
+          "ref-security-reduction",
+          "ref-falcon-spec"
         ]
       },
       {
-        "id": "claim-bridge",
-        "statement": "Any bridge from the 3-qubit Grover result to Falcon/FN-DSA or ECDSA consequences is either anchored in primary literature or explicitly downgraded to a modeling assumption.",
+        "id": "claim-gap-taxonomy",
+        "statement": "The manuscript presents all 12 machine-checked proof gaps, with GAP 7 and GAP 10 highlighted as the dominant concrete-security findings for parameter selection.",
         "observables": [
-          "obs_target_prob",
-          "obs_bridge_tags"
+          "obs-gap-taxonomy",
+          "obs-gap7-loss",
+          "obs-gap10-loss"
         ],
         "deliverables": [
-          "deliv-assumption-chain"
+          "deliv-gap-table",
+          "deliv-figure-plan",
+          "deliv-paper-draft"
         ],
         "acceptance_tests": [
-          "test-bridge-grounding"
+          "test-gap-coverage",
+          "test-concrete-security"
         ],
         "references": [
+          "ref-gap-report",
+          "ref-rejection",
+          "ref-random-oracle",
           "ref-falcon-spec",
-          "ref-roetteler-ecdsa",
-          "ref-local-script",
-          "ref-local-heron-summary"
+          "ref-bai-renyi",
+          "ref-prest-renyi"
         ]
       },
       {
-        "id": "claim-headline",
-        "statement": "The current folder narrative receives a justified keep, narrow, or retire recommendation grounded in measured facts, primary sources, and explicit missing-anchor findings.",
+        "id": "claim-surrogate-boundary",
+        "statement": "The Grover/Heron benchmark and noisy-sampler Lean model appear only as supporting surrogate-model cautionary evidence and never as a deployed Falcon break claim.",
         "observables": [
-          "obs_claim_tags",
-          "obs_bridge_tags"
+          "obs-supporting-boundary"
         ],
         "deliverables": [
-          "deliv-lit-review",
-          "deliv-recommendation"
+          "deliv-title-abstract",
+          "deliv-paper-draft"
         ],
         "acceptance_tests": [
-          "test-recommendation"
+          "test-surrogate-framing"
         ],
         "references": [
-          "ref-nist-pqc",
-          "ref-falcon-spec",
-          "ref-roetteler-ecdsa",
-          "ref-gidney-rsa",
-          "ref-ibm-roadmap"
+          "ref-surrogate-summary",
+          "ref-phase1-recommendation",
+          "ref-phase1-ledger",
+          "ref-local-script"
+        ]
+      },
+      {
+        "id": "claim-phase2-package",
+        "statement": "Phase 2 produces a paper-ready first-draft package consisting of title, abstract, section outline, figure/table plan, LaTeX draft, bibliography pass, and theorem/notation consistency pass.",
+        "observables": [
+          "obs-phase2-package"
+        ],
+        "deliverables": [
+          "deliv-title-abstract",
+          "deliv-outline",
+          "deliv-figure-plan",
+          "deliv-paper-draft",
+          "deliv-bibliography-pass",
+          "deliv-consistency-pass"
+        ],
+        "acceptance_tests": [
+          "test-draft-package"
+        ],
+        "references": [
+          "ref-gap-report",
+          "ref-phase1-recommendation"
+        ]
+      },
+      {
+        "id": "claim-review-submission",
+        "statement": "The manuscript pipeline concludes with a skeptical internal peer review and an ePrint-ready submission package.",
+        "observables": [
+          "obs-publication-readiness"
+        ],
+        "deliverables": [
+          "deliv-peer-review",
+          "deliv-submission-package"
+        ],
+        "acceptance_tests": [
+          "test-publication-readiness"
+        ],
+        "references": [
+          "ref-gap-report",
+          "ref-phase1-recommendation"
         ]
       }
     ],
     "deliverables": [
       {
-        "id": "deliv-ledger",
+        "id": "deliv-title-abstract",
+        "kind": "note",
+        "path": "paper/title-and-abstract.md",
+        "description": "Working title and abstract for the formal verification manuscript.",
+        "must_contain": [
+          "Primary theorem-centered contribution",
+          "Explicit no-attack boundary for the supporting surrogate section"
+        ]
+      },
+      {
+        "id": "deliv-outline",
+        "kind": "note",
+        "path": "paper/outline.md",
+        "description": "Section-level outline for the 6-10 page manuscript.",
+        "must_contain": [
+          "Main theorem section",
+          "12-gap taxonomy section",
+          "Supporting surrogate-model section"
+        ]
+      },
+      {
+        "id": "deliv-figure-plan",
+        "kind": "note",
+        "path": "paper/figure-table-plan.md",
+        "description": "Plan for the figures and tables that support the manuscript.",
+        "must_contain": [
+          "Gap summary table",
+          "Theorem-to-source mapping"
+        ]
+      },
+      {
+        "id": "deliv-gap-table",
         "kind": "table",
-        "path": ".gpd/phases/01-claim-audit/01-claim-ledger.md",
-        "description": "Claim ledger covering the main statements in the load-bearing local artifacts.",
+        "path": "paper/tables/gap-summary.tex",
+        "description": "Table summarizing all 12 machine-checked proof gaps and their severity classes.",
         "must_contain": [
-          "Evidence tag per claim",
-          "One source per claim"
+          "All 12 gaps",
+          "Severity grouping",
+          "GAP 7 and GAP 10 emphasis"
         ]
       },
       {
-        "id": "deliv-assumption-chain",
-        "kind": "note",
-        "path": ".gpd/phases/01-claim-audit/01-assumption-chain.md",
-        "description": "Step-by-step bridge from measured Grover output to cryptographic consequence, with downgrade points called out.",
-        "must_contain": [
-          "Measured versus modeled hops",
-          "Missing-anchor notes"
-        ]
-      },
-      {
-        "id": "deliv-lit-review",
+        "id": "deliv-paper-draft",
         "kind": "report",
-        "path": ".gpd/literature/pqc-falcon-claim-audit-REVIEW.md",
-        "description": "Literature review covering Falcon/FN-DSA proof framing, quantum resource estimates, and roadmap caveats.",
+        "path": "paper/main.tex",
+        "description": "First full LaTeX manuscript draft for IACR ePrint.",
         "must_contain": [
-          "Foundational works",
-          "Open questions",
-          "Active anchor registry"
+          "Faithful statement of falcon_security_reduction",
+          "Concrete-security interpretation of GAP 7 and GAP 10",
+          "Supporting surrogate-model caveats"
         ]
       },
       {
-        "id": "deliv-recommendation",
+        "id": "deliv-bibliography-pass",
         "kind": "note",
-        "path": ".gpd/phases/01-claim-audit/01-recommendation.md",
-        "description": "Recommendation memo stating whether to keep, narrow, or retire the existing storyline.",
+        "path": "paper/bibliography-pass.md",
+        "description": "Bibliography review and source-coverage notes for the manuscript.",
         "must_contain": [
-          "Replacement headline or framing",
-          "Reasoned verdict"
+          "Falcon specification coverage",
+          "Renyi reference coverage",
+          "Phase 1 prior-output coverage"
+        ]
+      },
+      {
+        "id": "deliv-consistency-pass",
+        "kind": "note",
+        "path": "paper/consistency-pass.md",
+        "description": "Theorem-name and notation consistency checklist against the Lean sources.",
+        "must_contain": [
+          "Theorem-name mapping",
+          "Error-term notation check"
+        ]
+      },
+      {
+        "id": "deliv-peer-review",
+        "kind": "report",
+        "path": ".gpd/REFEREE-REPORT.md",
+        "description": "Internal peer-review report generated by the GPD review panel.",
+        "must_contain": [
+          "Blocking issues",
+          "Venue-facing quality assessment"
+        ]
+      },
+      {
+        "id": "deliv-submission-package",
+        "kind": "data",
+        "path": "paper/submission.tar.gz",
+        "description": "Submission-ready IACR ePrint package.",
+        "must_contain": [
+          "Validated LaTeX source",
+          "Flattened bibliography",
+          "Verified metadata"
         ]
       }
     ],
     "acceptance_tests": [
       {
-        "id": "test-ledger-coverage",
-        "subject": "claim-ledger",
-        "kind": "human_review",
-        "procedure": "Review the three load-bearing artifacts and verify that every major statement appears in the ledger with one evidence tag and one source.",
-        "pass_condition": "No major statement from the local script or Aristotle summaries lacks a tag or a source.",
-        "evidence_required": [
-          "deliv-ledger",
-          "ref-local-script",
-          "ref-local-gap-report",
-          "ref-local-heron-summary"
-        ],
-        "automation": "human"
-      },
-      {
-        "id": "test-bridge-grounding",
-        "subject": "claim-bridge",
+        "id": "test-theorem-consistency",
+        "subject": "claim-main-theorem",
         "kind": "consistency",
-        "procedure": "Check each hop from p_hardware to epsilon_gate to sampler distance to Falcon/ECDSA consequence and require either a cited primary source or an explicit downgrade.",
-        "pass_condition": "Every hop is either source-grounded or explicitly labeled modeled or unsupported.",
+        "procedure": "Compare theorem statements, error terms, and notation in the manuscript against SecurityReduction.lean and ANALYSIS_REPORT.md.",
+        "pass_condition": "The manuscript reproduces falcon_security_reduction faithfully and any reader-facing paraphrase preserves the Lean mathematics exactly.",
         "evidence_required": [
-          "deliv-assumption-chain",
-          "ref-falcon-spec",
-          "ref-roetteler-ecdsa",
-          "ref-local-heron-summary"
+          "deliv-paper-draft",
+          "deliv-consistency-pass",
+          "ref-security-reduction",
+          "ref-gap-report"
         ],
         "automation": "hybrid"
       },
       {
-        "id": "test-recommendation",
-        "subject": "claim-headline",
-        "kind": "human_review",
-        "procedure": "Check that the final recommendation follows from the ledger, the assumption chain, and the literature review instead of from rhetorical preference.",
-        "pass_condition": "The recommendation cites at least one measured fact, one primary-source anchor, and one disconfirming or missing-anchor observation.",
+        "id": "test-gap-coverage",
+        "subject": "claim-gap-taxonomy",
+        "kind": "existence",
+        "procedure": "Check that all 12 proved gaps appear in the manuscript package with severity grouping and source theorem names where relevant.",
+        "pass_condition": "All 12 gaps are represented and GAP 7 / GAP 10 are explicitly highlighted.",
         "evidence_required": [
-          "deliv-recommendation",
-          "deliv-lit-review",
-          "deliv-ledger"
+          "deliv-gap-table",
+          "deliv-paper-draft",
+          "ref-gap-report"
+        ],
+        "automation": "hybrid"
+      },
+      {
+        "id": "test-concrete-security",
+        "subject": "claim-gap-taxonomy",
+        "kind": "consistency",
+        "procedure": "Check that the manuscript states the naive 32-bit GAP 7 degradation and the roughly 192-bit hardness implication from GAP 10 without dropping the model caveats.",
+        "pass_condition": "The concrete-security discussion matches the Lean report and the Falcon-spec Renyi framing.",
+        "evidence_required": [
+          "deliv-paper-draft",
+          "ref-gap-report",
+          "ref-falcon-spec",
+          "ref-bai-renyi",
+          "ref-prest-renyi"
         ],
         "automation": "human"
+      },
+      {
+        "id": "test-surrogate-framing",
+        "subject": "claim-surrogate-boundary",
+        "kind": "proxy",
+        "procedure": "Review the title, abstract, introduction, and conclusion for any deployed-attack claim or hardware-first framing.",
+        "pass_condition": "No section claims an actual Falcon forgery attack or uses the Heron benchmark as a direct cryptanalytic timeline anchor.",
+        "evidence_required": [
+          "deliv-title-abstract",
+          "deliv-paper-draft",
+          "ref-phase1-recommendation",
+          "ref-surrogate-summary"
+        ],
+        "automation": "human"
+      },
+      {
+        "id": "test-draft-package",
+        "subject": "claim-phase2-package",
+        "kind": "existence",
+        "procedure": "Check that all Phase 2 manuscript artifacts exist and reference one another consistently.",
+        "pass_condition": "Title/abstract, outline, figure/table plan, main.tex, bibliography pass, and consistency pass are all present.",
+        "evidence_required": [
+          "deliv-title-abstract",
+          "deliv-outline",
+          "deliv-figure-plan",
+          "deliv-paper-draft",
+          "deliv-bibliography-pass",
+          "deliv-consistency-pass"
+        ],
+        "automation": "hybrid"
+      },
+      {
+        "id": "test-publication-readiness",
+        "subject": "claim-review-submission",
+        "kind": "reproducibility",
+        "procedure": "Run the internal peer-review pass, then validate the build and packaging outputs for ePrint submission.",
+        "pass_condition": "A peer-review report exists and the submission archive validates cleanly.",
+        "evidence_required": [
+          "deliv-peer-review",
+          "deliv-submission-package",
+          "deliv-paper-draft"
+        ],
+        "automation": "hybrid"
       }
     ],
     "references": [
+      {
+        "id": "ref-gap-report",
+        "kind": "prior_artifact",
+        "locator": "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
+        "aliases": [
+          "analysis-report"
+        ],
+        "role": "must_consider",
+        "why_it_matters": "Primary summary of the 12 machine-checked proof gaps and their concrete-security interpretation.",
+        "applies_to": [
+          "claim-main-theorem",
+          "claim-gap-taxonomy",
+          "claim-phase2-package",
+          "claim-review-submission"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "use",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-security-reduction",
+        "kind": "prior_artifact",
+        "locator": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean",
+        "aliases": [
+          "security-reduction-lean"
+        ],
+        "role": "definition",
+        "why_it_matters": "Canonical Lean source for falcon_security_reduction, ReductionErrors, and falcon512_dominant_error.",
+        "applies_to": [
+          "claim-main-theorem",
+          "claim-gap-taxonomy"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "use",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-rejection",
+        "kind": "prior_artifact",
+        "locator": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RejectionSampling.lean",
+        "aliases": [
+          "rejection-sampling-lean"
+        ],
+        "role": "method",
+        "why_it_matters": "Canonical Lean source for GAP 6, GAP 7, and GAP 8, including gap7_renyi_to_advantage_loss.",
+        "applies_to": [
+          "claim-gap-taxonomy"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "use",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-random-oracle",
+        "kind": "prior_artifact",
+        "locator": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RandomOracle.lean",
+        "aliases": [
+          "random-oracle-lean"
+        ],
+        "role": "method",
+        "why_it_matters": "Canonical Lean source for GAP 9 through GAP 12, especially the ROM programming and forking-loss statements.",
+        "applies_to": [
+          "claim-gap-taxonomy"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "use",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-surrogate-summary",
+        "kind": "prior_artifact",
+        "locator": "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+        "aliases": [
+          "surrogate-summary"
+        ],
+        "role": "must_consider",
+        "why_it_matters": "Supporting summary of the artificial noisy-sampler model and the explicit no-forgery-attack caveat.",
+        "applies_to": [
+          "claim-surrogate-boundary"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "compare",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-phase1-ledger",
+        "kind": "prior_artifact",
+        "locator": ".gpd/phases/01-claim-audit/01-claim-ledger.md",
+        "aliases": [
+          "phase1-ledger"
+        ],
+        "role": "must_consider",
+        "why_it_matters": "Preserves the evidence taxonomy and the narrowed status of the hardware and timeline claims.",
+        "applies_to": [
+          "claim-surrogate-boundary"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "compare",
+          "cite"
+        ]
+      },
+      {
+        "id": "ref-phase1-recommendation",
+        "kind": "prior_artifact",
+        "locator": ".gpd/phases/01-claim-audit/01-recommendation.md",
+        "aliases": [
+          "phase1-recommendation"
+        ],
+        "role": "must_consider",
+        "why_it_matters": "Locks the narrow framing constraint approved in Phase 1.",
+        "applies_to": [
+          "claim-surrogate-boundary",
+          "claim-phase2-package",
+          "claim-review-submission"
+        ],
+        "carry_forward_to": [
+          "planning",
+          "verification",
+          "writing"
+        ],
+        "must_surface": true,
+        "required_actions": [
+          "read",
+          "compare",
+          "cite"
+        ]
+      },
       {
         "id": "ref-local-script",
         "kind": "prior_artifact",
@@ -259,88 +631,13 @@
         "aliases": [
           "local-grover-script"
         ],
-        "role": "benchmark",
-        "why_it_matters": "Primary source for the measured IBM job, derived p_hardware, fitted epsilon_gate, and the current narrative claims.",
+        "role": "background",
+        "why_it_matters": "Source of the 3-qubit Grover benchmark and the measurements that motivate the supporting cautionary section only.",
         "applies_to": [
-          "claim-ledger",
-          "claim-bridge"
+          "claim-surrogate-boundary"
         ],
         "carry_forward_to": [
           "planning",
-          "verification",
-          "writing"
-        ],
-        "must_surface": true,
-        "required_actions": [
-          "read",
-          "compare",
-          "cite"
-        ]
-      },
-      {
-        "id": "ref-local-gap-report",
-        "kind": "prior_artifact",
-        "locator": "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
-        "aliases": [
-          "local-gap-report"
-        ],
-        "role": "must_consider",
-        "why_it_matters": "Contains the local Lean-authored Falcon proof-gap analysis that must be interpreted as a surrogate-model result.",
-        "applies_to": [
-          "claim-ledger"
-        ],
-        "carry_forward_to": [
-          "planning",
-          "verification",
-          "writing"
-        ],
-        "must_surface": true,
-        "required_actions": [
-          "read",
-          "compare",
-          "cite"
-        ]
-      },
-      {
-        "id": "ref-local-heron-summary",
-        "kind": "prior_artifact",
-        "locator": "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
-        "aliases": [
-          "local-heron-vs-falcon-summary"
-        ],
-        "role": "must_consider",
-        "why_it_matters": "Contains the local surrogate model connecting Heron noise to a Falcon reduction failure claim.",
-        "applies_to": [
-          "claim-ledger",
-          "claim-bridge"
-        ],
-        "carry_forward_to": [
-          "planning",
-          "verification",
-          "writing"
-        ],
-        "must_surface": true,
-        "required_actions": [
-          "read",
-          "compare",
-          "cite"
-        ]
-      },
-      {
-        "id": "ref-nist-pqc",
-        "kind": "spec",
-        "locator": "https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization",
-        "aliases": [
-          "nist-pqc-standardization-page"
-        ],
-        "role": "benchmark",
-        "why_it_matters": "Official source for the date-qualified NIST status of Falcon/FN-DSA standardization.",
-        "applies_to": [
-          "claim-headline"
-        ],
-        "carry_forward_to": [
-          "planning",
-          "verification",
           "writing"
         ],
         "must_surface": true,
@@ -358,10 +655,10 @@
           "falcon-spec-v1.2"
         ],
         "role": "definition",
-        "why_it_matters": "Primary technical description of Falcon, including NTRU lattices, fast Fourier sampling, and the Renyi-divergence-based security framing.",
+        "why_it_matters": "Primary scheme reference for FALCON sampling and Renyi-based security framing.",
         "applies_to": [
-          "claim-bridge",
-          "claim-headline"
+          "claim-main-theorem",
+          "claim-gap-taxonomy"
         ],
         "carry_forward_to": [
           "planning",
@@ -376,17 +673,16 @@
         ]
       },
       {
-        "id": "ref-roetteler-ecdsa",
+        "id": "ref-bai-renyi",
         "kind": "paper",
-        "locator": "https://eprint.iacr.org/2017/598",
+        "locator": "Shi Bai et al., ASIACRYPT 2015, Improved security proofs in lattice-based cryptography: Using the Renyi divergence rather than the statistical distance",
         "aliases": [
-          "roetteler-2017-ecc-resource-estimates"
+          "bai-2015-renyi"
         ],
-        "role": "benchmark",
-        "why_it_matters": "Published resource-estimate anchor for elliptic-curve discrete logarithms, used to assess whether the local ECDSA plot is literature-grounded.",
+        "role": "method",
+        "why_it_matters": "Primary Renyi-divergence reference for explaining why GAP 7 is subtle and model-dependent.",
         "applies_to": [
-          "claim-bridge",
-          "claim-headline"
+          "claim-gap-taxonomy"
         ],
         "carry_forward_to": [
           "planning",
@@ -401,18 +697,19 @@
         ]
       },
       {
-        "id": "ref-gidney-rsa",
+        "id": "ref-prest-renyi",
         "kind": "paper",
-        "locator": "https://doi.org/10.22331/q-2021-04-15-433",
+        "locator": "Thomas Prest, ASIACRYPT 2017, Sharper bounds in lattice-based cryptography using the Renyi divergence",
         "aliases": [
-          "gidney-ekera-2021-rsa"
+          "prest-2017-renyi"
         ],
-        "role": "background",
-        "why_it_matters": "Provides a published noisy-qubit cryptanalysis resource model, but for RSA and finite-field discrete logs rather than Falcon or ECC-over-prime-field timelines from a Grover demo.",
+        "role": "method",
+        "why_it_matters": "Primary Renyi-framing reference for the caveat that tighter Renyi handling can recover stronger security claims than a naive total-variation conversion.",
         "applies_to": [
-          "claim-headline"
+          "claim-gap-taxonomy"
         ],
         "carry_forward_to": [
+          "planning",
           "verification",
           "writing"
         ],
@@ -420,162 +717,195 @@
         "required_actions": [
           "read",
           "compare",
-          "cite"
-        ]
-      },
-      {
-        "id": "ref-ibm-roadmap",
-        "kind": "other",
-        "locator": "https://www.ibm.com/roadmaps/quantum/2026/",
-        "aliases": [
-          "ibm-quantum-roadmap-2026"
-        ],
-        "role": "background",
-        "why_it_matters": "Current vendor-intent source for hardware scale and gate-depth goals, useful only with its stated caveats.",
-        "applies_to": [
-          "claim-headline"
-        ],
-        "carry_forward_to": [
-          "verification",
-          "writing"
-        ],
-        "must_surface": true,
-        "required_actions": [
-          "read",
-          "compare",
-          "cite"
-        ]
-      },
-      {
-        "id": "ref-grover-1996",
-        "kind": "paper",
-        "locator": "https://doi.org/10.1145/237814.237866",
-        "aliases": [
-          "grover-1996"
-        ],
-        "role": "background",
-        "why_it_matters": "Foundational source for the small-scale search algorithm demonstrated locally; it does not by itself justify cryptanalytic timeline extrapolations.",
-        "applies_to": [
-          "claim-headline"
-        ],
-        "carry_forward_to": [
-          "writing"
-        ],
-        "must_surface": true,
-        "required_actions": [
-          "read",
           "cite"
         ]
       }
     ],
     "forbidden_proxies": [
       {
-        "id": "fp-grover-speedup",
-        "subject": "claim-bridge",
-        "proxy": "Treating a 5.97x target-state uplift in a 3-qubit Grover demo as evidence for real-world cryptanalytic timelines.",
-        "reason": "The local run measures a tiny search instance, not a deployed cryptanalytic workload."
+        "id": "fp-hardware-headline",
+        "subject": "claim-phase2-package",
+        "proxy": "Centering the paper title or abstract on the 3-qubit Grover or Heron benchmark instead of the Lean proof-gap formalization.",
+        "reason": "The hardware result is supporting context, not the primary contribution."
       },
       {
-        "id": "fp-proof-break-attack",
-        "subject": "claim-headline",
-        "proxy": "Treating a vacuous surrogate reduction bound as proof of an actual Falcon forgery attack.",
-        "reason": "A broken proof path inside a toy model is not an implemented exploit against deployed Falcon."
+        "id": "fp-attack-claim",
+        "subject": "claim-surrogate-boundary",
+        "proxy": "Stating or implying that Heron noise makes deployed Falcon exploitable.",
+        "reason": "Phase 1 already established that the surrogate model is artificial and no forgery attack is constructed."
       },
       {
-        "id": "fp-undated-standard-status",
-        "subject": "claim-headline",
-        "proxy": "Referring to FIPS 206 as already finalized without an exact, date-qualified source check.",
-        "reason": "Standards status is time-sensitive and the official NIST page used here still listed Falcon as in development as of December 11, 2025."
+        "id": "fp-loose-bound",
+        "subject": "claim-main-theorem",
+        "proxy": "Paraphrasing falcon_security_reduction in a way that drops explicit error terms or the Q_H and Q_S dependence.",
+        "reason": "The explicit error-term structure is the core formal contribution and must remain exact."
+      },
+      {
+        "id": "fp-gap-count-drift",
+        "subject": "claim-gap-taxonomy",
+        "proxy": "Highlighting only the critical gaps without explicitly accounting for all 12 machine-checked gaps.",
+        "reason": "The completeness of the gap taxonomy is part of the paper's value."
       }
     ],
     "links": [
       {
-        "id": "link-ledger",
-        "source": "claim-ledger",
-        "target": "deliv-ledger",
+        "id": "link-main-theorem-draft",
+        "source": "claim-main-theorem",
+        "target": "deliv-paper-draft",
         "relation": "supports",
         "verified_by": [
-          "test-ledger-coverage"
+          "test-theorem-consistency"
         ]
       },
       {
-        "id": "link-bridge",
-        "source": "claim-bridge",
-        "target": "deliv-assumption-chain",
-        "relation": "supports",
+        "id": "link-main-theorem-outline",
+        "source": "claim-main-theorem",
+        "target": "deliv-outline",
+        "relation": "depends_on",
         "verified_by": [
-          "test-bridge-grounding"
+          "test-draft-package"
         ]
       },
       {
-        "id": "link-review",
-        "source": "claim-headline",
-        "target": "deliv-lit-review",
+        "id": "link-gap-table",
+        "source": "claim-gap-taxonomy",
+        "target": "deliv-gap-table",
         "relation": "supports",
         "verified_by": [
-          "test-recommendation"
+          "test-gap-coverage",
+          "test-concrete-security"
         ]
       },
       {
-        "id": "link-recommendation",
-        "source": "claim-headline",
-        "target": "deliv-recommendation",
+        "id": "link-gap-draft",
+        "source": "claim-gap-taxonomy",
+        "target": "deliv-paper-draft",
         "relation": "supports",
         "verified_by": [
-          "test-recommendation"
+          "test-gap-coverage",
+          "test-concrete-security"
+        ]
+      },
+      {
+        "id": "link-surrogate-abstract",
+        "source": "claim-surrogate-boundary",
+        "target": "deliv-title-abstract",
+        "relation": "supports",
+        "verified_by": [
+          "test-surrogate-framing"
+        ]
+      },
+      {
+        "id": "link-surrogate-draft",
+        "source": "claim-surrogate-boundary",
+        "target": "deliv-paper-draft",
+        "relation": "supports",
+        "verified_by": [
+          "test-surrogate-framing"
+        ]
+      },
+      {
+        "id": "link-phase2-package",
+        "source": "claim-phase2-package",
+        "target": "deliv-paper-draft",
+        "relation": "supports",
+        "verified_by": [
+          "test-draft-package"
+        ]
+      },
+      {
+        "id": "link-review-submission",
+        "source": "claim-review-submission",
+        "target": "deliv-submission-package",
+        "relation": "depends_on",
+        "verified_by": [
+          "test-publication-readiness"
         ]
       }
     ],
     "uncertainty_markers": {
       "weakest_anchors": [
-        "The mapping from a 3-qubit Grover success probability to Falcon sampler statistical distance.",
-        "The relevance of a quantum-hardware sampler model to deployed Falcon implementations that run classically."
+        "How much manuscript real estate the supporting surrogate hardware-noise section deserves without diluting the primary Lean contribution.",
+        "How best to translate GAP 7 and GAP 10 into paper-level concrete-security language without overstating deployment consequences."
       ],
       "unvalidated_assumptions": [
-        "Independent-gate error fitting from one Grover circuit is adequate for application-level security claims.",
-        "The q_sign = 2^64 surrogate setting is the right way to discuss the local storyline."
+        "A 6-10 page format can carry the main theorem, all 12 gaps, and the supporting surrogate section without hiding key caveats.",
+        "The current Lean theorem names can be used as the manuscript's canonical naming layer with only light reader-facing explanation."
       ],
       "competing_explanations": [
-        "The local experiment may only demonstrate small-instance amplitude amplification under noise, with no direct Falcon or ECDSA consequence.",
-        "The Lean proofs may best be read as explicit surrogate-model stress tests rather than as evidence of a live Falcon break."
+        "The project could still read as a claim-audit note about hardware rhetoric rather than as a formal verification paper if the supporting sections dominate.",
+        "The work could be framed as a general formal-methods case study rather than as a concrete PQC contribution."
       ],
       "disconfirming_observations": [
-        "No primary source is found that connects Grover target-state success probability to Falcon sampler distance; if that remains true, the direct bridge must be downgraded.",
-        "If the official NIST page continues to list FIPS 206 as in development, the current wording about Falcon already being standardized must be rewritten with exact dates."
+        "If the draft's strongest claims still depend on the unsupported Grover-to-Falcon bridge, the paper framing is wrong and must be rewritten.",
+        "If theorem statements, gap counts, or concrete-security numbers drift from the Lean artifacts during drafting, the manuscript is not ready for peer review."
       ]
     }
   },
   "position": {
-    "current_phase": "01",
-    "current_phase_name": "Claim Audit",
-    "total_phases": 1,
-    "current_plan": "2",
-    "total_plans_in_phase": 2,
-    "status": "Complete",
-    "last_activity": "2026-04-03",
-    "last_activity_desc": "Project initialized, mapped, planned, and first-pass claim audit executed",
-    "progress_percent": 100,
+    "current_phase": "3",
+    "current_phase_name": "Internal Peer Review",
+    "total_phases": 4,
+    "current_plan": "0",
+    "total_plans_in_phase": 0,
+    "status": "Ready to plan",
+    "last_activity": "2026-04-04",
+    "last_activity_desc": "Completed quick task 001: manuscript summary, gap coverage check, and theorem-name audit",
+    "progress_percent": 50,
     "paused_at": null
   },
   "active_calculations": [],
-  "intermediate_results": [],
+  "intermediate_results": [
+    "`falcon_security_reduction` makes the EUF-CMA reduction error terms explicit.",
+    "The existing Lean artifacts identify 12 machine-checked proof gaps with GAP 7 and GAP 10 as the dominant concrete-security findings.",
+    "The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.",
+    "Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim."
+  ],
   "open_questions": [
-    "Is there any defensible primary-source bridge from the local Grover measurement to Falcon sampler distance?",
-    "Should the ECDSA timeline plot be retired entirely or replaced with a published resource-estimate comparison figure?"
+    "Should the surrogate hardware-noise section stay in the main text or move to an appendix?",
+    "What exact title and abstract wording best balances the PQC and Lean / Mathlib audiences?",
+    "What is the cleanest reader-facing presentation of GAP 7 and GAP 10 without dropping the Renyi-divergence caveat?"
   ],
   "performance_metrics": {
-    "rows": []
+    "rows": [
+      {
+        "label": "Phase 1 audit",
+        "duration": "one session",
+        "tasks": "4 deliverables + 2 plans",
+        "files": "20+"
+      }
+    ]
   },
   "decisions": [
     {
-      "phase": "1",
-      "summary": "Use evidence tags measured, modeled, proved in surrogate model, and unsupported.",
-      "rationale": "The folder mixes empirical data, derived models, and local formal proofs that should not be conflated."
+      "phase": null,
+      "summary": "[Phase 1] Evidence tags are locked: measured, modeled, proved in surrogate model, unsupported.",
+      "rationale": null
     },
     {
-      "phase": "1",
-      "summary": "Use primary sources to gate standards-status and cryptanalytic-resource claims.",
-      "rationale": "The current storyline contains time-sensitive and deployment-sensitive statements."
+      "phase": null,
+      "summary": "[Phase 1] Primary sources win over storyline convenience.",
+      "rationale": null
+    },
+    {
+      "phase": null,
+      "summary": "[Phase 2] The manuscript is centered on the Lean proof-gap formalization rather than the Grover / Heron benchmark.",
+      "rationale": null
+    },
+    {
+      "phase": null,
+      "summary": "[Phase 2] The surrogate hardware-noise work remains supporting context only and must preserve the no-attack boundary.",
+      "rationale": null
+    },
+    {
+      "phase": "2",
+      "summary": "Executed Phase 2 and produced the first manuscript draft package.",
+      "rationale": "The title/abstract, outline, figure-table plan, LaTeX draft, gap table, bibliography pass, and theorem-consistency pass now exist and shift the next bottleneck to internal peer review."
+    },
+    {
+      "phase": "quick-001",
+      "summary": "Quick task 001: draft summary and theorem-name audit",
+      "rationale": "Ad-hoc review completed outside planned phases"
     }
   ],
   "approximations": [],
@@ -602,12 +932,16 @@
   },
   "propagated_uncertainties": [],
   "pending_todos": [
-    "Rotate the IBM Quantum token in the IBM account because the credential was previously embedded in local files."
+    "Rotate the IBM Quantum token in the IBM account because it was previously embedded in the notebook and script."
   ],
-  "blockers": [],
+  "blockers": [
+    "The exact placement of the surrogate hardware-noise section is still unsettled."
+  ],
   "session": {
-    "last_date": "2026-04-03T00:00:00Z",
-    "stopped_at": "Phase 1 complete \u2014 review audit verdict and decide on follow-up scope",
-    "resume_file": ".gpd/phases/01-claim-audit/01-recommendation.md"
-  }
+    "last_date": "2026-04-04",
+    "stopped_at": "Ready to start Phase 3 internal peer review on the new manuscript package",
+    "resume_file": "`.gpd/ROADMAP.md`"
+  },
+  "_version": 1,
+  "_synced_at": "2026-04-04T21:46:05.951510+00:00"
 }
