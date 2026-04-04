@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\title{Machine-Checked Proof Gaps in the FALCON-512 EUF-CMA Reduction\\\large A Lean 4 Formalization of Explicit Concrete-Security Losses}
+\author{Working Draft}
+\date{April 4, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a Lean 4 formalization of the FALCON-512 EUF-CMA security reduction that makes every loss term in the reduction explicit and machine-checks twelve proof gaps without \texttt{sorry} under Mathlib4 v4.28.0. Our main theorem, \texttt{falcon\_security\_reduction}, exposes the reduction bound
+\[
+\varepsilon_{\mathrm{forge}} \le Q_H \varepsilon_{\mathrm{SIS}} + \delta_{\mathrm{rej}} + \delta_{\mathrm{fp}} + \delta_{\mathrm{smooth}} + \delta_{\mathrm{hash}} + Q_S \delta_{\mathrm{abort}},
+\]
+so that approximation losses, oracle-programming losses, and implementation-sensitive terms appear as named objects rather than as hidden prose assumptions. We classify all twelve machine-checked gaps by severity and identify two as decisive for concrete security interpretation: GAP~7, where a naive Re'nyi-to-total-variation conversion yields an approximately 32-bit degradation path, and GAP~10, where random-oracle programming contributes a $Q_H$ loss that pushes the underlying NTRU-SIS hardness target to roughly 192 bits for 128-bit forgery security in the stated model. We also report a supporting surrogate-model stress test based on a noisy quantum-sampler thought experiment, but keep that result explicitly secondary: it does not construct a forgery attack and does not imply that deployed Falcon implementations are broken. The contribution of this paper is therefore not a new exploit, but a machine-checked accounting of where concrete security is lost, what assumptions must stay visible, and which parts of the FALCON proof story are genuinely load-bearing.
+\end{abstract}
+
+\section{Introduction}
+
+Security reductions for lattice signatures often distribute the real loss story across multiple proof ingredients: Gaussian-sampling arguments, rejection-sampling lemmas, smoothing-parameter bounds, random-oracle-programming steps, and implementation-sensitive approximations. For FALCON-512, that proof story is sophisticated enough that reader-facing summaries can easily obscure which losses are explicit, which are mitigated, and which are merely controlled heuristically.
+
+This draft takes a theorem-first approach. Instead of retelling the FALCON proof at the level of informal prose, we formalize its EUF-CMA reduction in Lean 4 and make the reduction losses explicit in a single machine-checked bound. The resulting formalization identifies twelve proof gaps, classifies them by severity, and isolates the two load-bearing concrete-security effects: the naive Re'nyi-to-total-variation conversion loss (GAP~7) and the random-oracle-programming loss (GAP~10).
+
+The main point is not that FALCON is practically broken. It is not. The point is that theorem-level loss accounting matters, and that a machine-checked representation of the reduction exposes exactly where the concrete-security story depends on nontrivial proof choices. This includes the need to reason carefully about the Re'nyi framework rather than collapsing everything into total variation, and the need to keep the $Q_H$ loss explicit when translating reduction quality into required underlying hardness.
+
+The repository also contains a supporting surrogate-model stress test based on a noisy quantum-sampler thought experiment and a local IBM Heron benchmark. We keep that material explicitly secondary. It provides a cautionary example of how quickly proof guarantees can become vacuous inside an artificial model, but it does not construct a forgery attack and it does not describe deployed Falcon implementations.
+
+\paragraph{Contributions.}
+This draft makes four contributions:
+\begin{enumerate}
+\item a Lean 4 formalization of the FALCON-512 EUF-CMA reduction with explicit loss terms;
+\item a machine-checked taxonomy of twelve proof gaps;
+\item a concrete-security interpretation centered on GAP~7 and GAP~10;
+\item a source-disciplined framing of supporting surrogate-model evidence that preserves the explicit no-attack boundary.
+\end{enumerate}
+
+\section{The Reduction and Its Lean Encoding}
+
+The formal development is organized around the theorem \texttt{falcon\_security\_reduction} in \texttt{formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}. It packages the reduction from EUF-CMA forgery to underlying NTRU-SIS hardness while exposing every intermediate loss term as a named field of the structure \texttt{ReductionErrors}. The resulting bound is
+\begin{equation}
+\label{eq:main-reduction}
+\varepsilon_{\mathrm{forge}} \le Q_H \varepsilon_{\mathrm{SIS}} + \delta_{\mathrm{rej}} + \delta_{\mathrm{fp}} + \delta_{\mathrm{smooth}} + \delta_{\mathrm{hash}} + Q_S \delta_{\mathrm{abort}}.
+\end{equation}
+
+Equation~\eqref{eq:main-reduction} is the center of the manuscript. It is where the proof stops being a single headline claim and becomes an explicit accounting identity. The $Q_H$ term captures the random-oracle-programming loss, the $Q_S$ term captures signing-abort amplification, and the remaining delta terms isolate the parts of the proof that depend on rejection-sampling behavior, floating-point Gaussian approximation, smoothing-parameter control, and hash-to-point behavior.
+
+The Lean formalization is not a full end-to-end proof of FN-DSA security, and we do not claim otherwise. Its contribution is narrower and, for this paper, more useful: every load-bearing approximation or bounding step becomes explicit enough to classify, cite, and interpret. In particular, the development builds a canonical vocabulary for discussing where concrete security is lost and what must be assumed for the published 128-bit story to hold in the intended proof model.
+
+Two source-level facts matter especially for the manuscript:
+\begin{enumerate}
+\item the theorem and its explicit loss decomposition must remain recognizable in reader-facing prose; and
+\item the surrounding discussion must preserve the distinction between a machine-checked formal gap analysis and an actual attack construction.
+\end{enumerate}
+
+\section{Twelve Machine-Checked Proof Gaps}
+
+The accompanying formal gap report identifies twelve proof gaps and groups them into four severity classes: critical, moderate, minor, and mitigated. The goal of the taxonomy is not to claim that every gap is equally dangerous; it is to prevent the reduction story from collapsing into an undifferentiated security headline.
+
+\input{tables/gap-summary.tex}
+
+The two critical gaps are GAP~7 and GAP~10. GAP~7 concerns the loss incurred by a naive Re'nyi-to-total-variation conversion. GAP~10 concerns the cost of random-oracle programming, including the need to guess the decisive hash query and, in related settings, absorb additional forking-style losses. These are the gaps with the clearest concrete-security effect on parameter selection.
+
+The moderate gaps capture places where the proof remains sensitive to key quality, smoothing assumptions, or rejection-sampling behavior. The minor gaps record quantitatively smaller but still explicit mismatches between the idealized argument and a concrete implementation story. The mitigated gaps remain in the table because they are part of the full machine-checked account, but the surrounding proof or standardization story already contains plausible mechanisms for containing them.
+
+The point of retaining all twelve gaps in the paper is methodological as much as technical. A formal proof-gap analysis is only credible if it shows the entire taxonomy rather than spotlighting one or two striking items while hiding the rest of the ledger.
+
+\section{Concrete-Security Interpretation}
+
+\subsection*{GAP 7: Re'nyi-to-total-variation loss}
+
+The Lean theorem \texttt{gap7\_renyi\_to\_advantage\_loss} records a basic but consequential fact: a naive conversion from order-2 Re'nyi divergence to total variation introduces a square-root loss. In small-parameter language, an $\varepsilon$-scale Re'nyi quantity becomes an approximately $\sqrt{\varepsilon}$-scale total-variation quantity. For the concrete scale discussed in the formal gap report, this turns a $2^{-64}$ quantity into an approximately $2^{-32}$ bound. The companion Lean theorem \texttt{falcon512\_dominant\_error}, also in \texttt{formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}, records the corresponding dominance statement for the concrete FALCON-512 error instantiation: the $\delta_{\mathrm{rej}} \approx 2^{-32}$ term dominates $\delta_{\mathrm{fp}}$, $\delta_{\mathrm{smooth}}$, and $\delta_{\mathrm{hash}}$.
+
+This is the source of the headline ``32-bit degradation'' language, but it needs to be stated with care. The published FALCON proof does not simply throw away the Re'nyi structure and convert everything to total variation at the first opportunity. Instead, it relies on maintaining the Re'nyi framework through the reduction. The machine-checked point is therefore conditional and useful: if one reasons naively at the total-variation level, the loss is brutal; if one wants the stronger story, the Re'nyi chain must be carried carefully and explicitly through the entire proof pipeline.
+
+\subsection*{GAP 10: random-oracle programming loss}
+
+The Lean theorem \texttt{gap10\_rom\_programming\_loss} captures the random-oracle-programming cost. The reduction must guess which of the adversary's hash queries will become decisive, and that guess costs a factor of $Q_H$. In the concrete-security discussion this matters immediately: if one wants 128-bit forgery security in the stated model, the underlying NTRU-SIS hardness target must absorb that $Q_H$ loss. The formal gap report summarizes this as a roughly 192-bit hardness requirement.
+
+In that sense, GAP~10 is less subtle than GAP~7 and more operational. It says that even before one worries about secondary approximation losses, the reduction's dependence on query complexity already pushes the underlying hardness target beyond a naive ``128-bit in, 128-bit out'' reading. The theorem-first paper should make this explicit rather than letting it hide in reduction folklore.
+
+\subsection*{Interplay}
+
+The most important concrete-security lesson is the interaction of GAP~7 and GAP~10. GAP~10 already taxes the reduction through $Q_H$. GAP~7 then punishes any naive attempt to convert the proof story into total-variation language. Together they explain why the machine-checked formalization is useful: the formal artifact makes visible exactly which assumptions must remain live if one wants to preserve the strongest reader-facing security interpretation.
+
+\section{Supporting Surrogate-Model Stress Test}
+
+The repository also contains a separate Lean development for a noisy quantum-sampler thought experiment. Inside that artificial model, the reduction can become vacuous at noise levels far above the tiny threshold required by the reduction bound. This is a legitimate supporting observation, but it must be framed correctly.
+
+The correct statement is about proof vacuity inside a surrogate model, not about a practical attack on deployed Falcon. No forgery attack is constructed. Indeed, the surrogate summary is explicit that correctness fails first in the noisy-sampler story: sufficiently noisy outputs become invalid signatures before they become useful attack tools. We therefore keep this material as a short supporting section rather than as the paper's headline result.
+
+This framing matters for two reasons. First, it preserves scientific honesty: the current repository does not close the bridge from a tiny Grover benchmark to a deployed Falcon exploit. Second, it improves the paper itself: the manuscript is strongest when it foregrounds what is truly machine-checked and theorem-level, rather than when it borrows rhetorical energy from a broader hardware-security narrative that the source base does not support.
+
+\section{Conclusion}
+
+The contribution of this draft is a machine-checked loss ledger for the FALCON-512 EUF-CMA reduction. By formalizing the reduction in Lean 4 and exposing the theorem-level loss structure directly, the project turns informal proof folklore into explicit objects that can be classified, cited, and scrutinized. The resulting taxonomy contains twelve proof gaps, but two deserve special emphasis for concrete security interpretation: GAP~7, which punishes a naive Re'nyi-to-total-variation reading, and GAP~10, which keeps the $Q_H$ loss visible in the random-oracle step.
+
+This is not a paper about breaking Falcon in practice. It is a paper about where a reduction loses concrete security, how those losses compose in a theorem-first representation, and why machine-checked formalisms are a useful tool for keeping that story honest. Natural follow-up directions include tightening the formal treatment of the Re'nyi chain, extending the formalization to a broader portion of the lattice-signature proof stack, and deciding whether the supporting surrogate-model stress test deserves a separate note or a later appendix-focused expansion.
+
+\begin{thebibliography}{9}
+
+\bibitem{falconSpec}
+Thomas Prest, Pierre-Alain Fouque, Jeffrey Hoffstein, Paul Kirchner, Vadim Lyubashevsky, Thomas Pornin, Thomas Ricosset, Gregor Seiler, William Whyte, and Zhenfei Zhang.
+\newblock \emph{Falcon: Fast-Fourier Lattice-Based Compact Signatures over NTRU}.
+\newblock Specification v1.2, 2020.
+
+\bibitem{baiRenyi}
+Shi Bai, Damien Stehl\'e, and Weiqiang Wen.
+\newblock Improved security proofs in lattice-based cryptography: Using the Re'nyi divergence rather than the statistical distance.
+\newblock ASIACRYPT 2015.
+
+\bibitem{prestRenyi}
+Thomas Prest.
+\newblock Sharper bounds in lattice-based cryptography using the Re'nyi divergence.
+\newblock ASIACRYPT 2017.
+
+\bibitem{grover}
+Lov K. Grover.
+\newblock A Fast Quantum Mechanical Algorithm for Database Search.
+\newblock STOC 1996.
+
+\end{thebibliography}
+
+\end{document}

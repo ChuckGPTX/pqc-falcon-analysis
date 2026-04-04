@@ -850,7 +850,7 @@
     "total_plans_in_phase": 0,
     "status": "Ready to plan",
     "last_activity": "2026-04-04",
-    "last_activity_desc": "Completed quick task 001: manuscript summary, gap coverage check, and theorem-name audit",
+    "last_activity_desc": "Completed quick task 002: manuscript dominant-error citation and proof-gap path update",
     "progress_percent": 50,
     "paused_at": null
   },
@@ -906,6 +906,11 @@
       "phase": "quick-001",
       "summary": "Quick task 001: draft summary and theorem-name audit",
       "rationale": "Ad-hoc review completed outside planned phases"
+    },
+    {
+      "phase": "quick-002",
+      "summary": "Quick task 002: dominant-error citation and proof-gap path normalization",
+      "rationale": "Patched the manuscript to cite falcon512_dominant_error explicitly and aligned paper-package proof-gap references to the requested formal path convention"
     }
   ],
   "approximations": [],
@@ -943,5 +948,5 @@
     "resume_file": "`.gpd/ROADMAP.md`"
   },
   "_version": 1,
-  "_synced_at": "2026-04-04T21:46:05.951510+00:00"
+  "_synced_at": "2026-04-04T21:53:53.899210+00:00"
 }

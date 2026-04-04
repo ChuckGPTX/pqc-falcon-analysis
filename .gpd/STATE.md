@@ -20,7 +20,7 @@ See: `.gpd/PROJECT.md` (updated 2026-04-04)
 **Total Plans in Phase:** 0
 **Status:** Ready to plan
 **Last Activity:** 2026-04-04
-**Last Activity Description:** Completed quick task 001: manuscript summary, gap coverage check, and theorem-name audit
+**Last Activity Description:** Completed quick task 002: manuscript dominant-error citation and proof-gap path update
 
 **Progress:** [█████░░░░░] 50%
 
@@ -57,6 +57,7 @@ Phase 2 manuscript artifacts were produced; no active calculations are running.
 - [Phase 2] The surrogate hardware-noise work remains supporting context only and must preserve the no-attack boundary.
 - [Phase 2]: Executed Phase 2 and produced the first manuscript draft package. — The title/abstract, outline, figure-table plan, LaTeX draft, gap table, bibliography pass, and theorem-consistency pass now exist and shift the next bottleneck to internal peer review.
 - [Phase quick-001]: Quick task 001: draft summary and theorem-name audit — Ad-hoc review completed outside planned phases
+- [Phase quick-002]: Quick task 002: dominant-error citation and proof-gap path normalization — Patched the manuscript to cite falcon512_dominant_error explicitly and aligned paper-package proof-gap references to the requested formal path convention
 
 ### Active Approximations
 
