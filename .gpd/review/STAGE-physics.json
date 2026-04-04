@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "round": 1,
+  "stage_id": "physics",
+  "stage_kind": "physics",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims_reviewed": [
+    "CLM-003",
+    "CLM-004"
+  ],
+  "summary": "Interpreted as a model-soundness review rather than a physics review in the literal sense, the paper behaves responsibly: it keeps the deployed-system boundary explicit and does not smuggle the surrogate-model result into an attack claim.",
+  "strengths": [
+    "The surrogate-model section explicitly states that no forgery attack is constructed.",
+    "The introduction and conclusion do not convert the IBM Heron benchmark into a deployed Falcon claim."
+  ],
+  "findings": [],
+  "confidence": "high",
+  "recommendation_ceiling": "minor_revision"
+}

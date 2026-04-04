@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "round": 1,
+  "stage_id": "reader",
+  "stage_kind": "reader",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims_reviewed": [
+    "CLM-001",
+    "CLM-002",
+    "CLM-003",
+    "CLM-004",
+    "CLM-005"
+  ],
+  "summary": "The manuscript reads cleanly as a theorem-first note and it keeps the no-attack boundary intact, but the reader-facing audit trail is weakened by source-path references that do not resolve in the current checkout and by a supporting section that still occupies more narrative weight than it needs.",
+  "strengths": [
+    "The abstract, introduction, and conclusion consistently state that no forgery attack is constructed.",
+    "The main reduction theorem and the GAP 7 / GAP 10 story are easy to identify on a first read."
+  ],
+  "findings": [
+    {
+      "issue_id": "REF-001",
+      "claim_ids": [
+        "CLM-001",
+        "CLM-002"
+      ],
+      "severity": "major",
+      "summary": "The manuscript's formal-source path references do not match the current repository layout.",
+      "rationale": "A reader cannot follow the paper's theorem-to-source audit trail when the prose cites formal/proof-gap-analysis/... paths but the checkout only contains artifacts/aristotle-proof-gap-analysis/.",
+      "evidence_refs": [
+        "paper/main.tex#The Reduction and Its Lean Encoding",
+        "paper/bibliography-pass.md#Must-Cite Local Project Artifacts",
+        "paper/consistency-pass.md#Theorem Mapping",
+        "paper/ARTIFACT-MANIFEST.json#path_aliases"
+      ],
+      "manuscript_locations": [
+        "paper/main.tex:44",
+        "paper/main.tex:76",
+        "paper/bibliography-pass.md:14",
+        "paper/consistency-pass.md:5"
+      ],
+      "support_status": "unclear",
+      "blocking": true,
+      "required_action": "Either update the manuscript and support notes to the actual artifacts/... paths, or explicitly document the alias mapping in the manuscript itself rather than only in the review-support manifest."
+    },
+    {
+      "issue_id": "REF-004",
+      "claim_ids": [
+        "CLM-004"
+      ],
+      "severity": "minor",
+      "summary": "The supporting surrogate-model section is already disciplined, but it still deserves additional compression so the formal-verification contribution dominates the page budget.",
+      "rationale": "The paper's strongest material is the reduction and gap taxonomy; the supporting surrogate section is not wrong, but a shorter treatment would sharpen the paper for expert readers.",
+      "evidence_refs": [
+        "paper/main.tex#Supporting Surrogate-Model Stress Test",
+        "paper/outline.md#Supporting Surrogate-Model Stress Test"
+      ],
+      "manuscript_locations": [
+        "paper/main.tex:90",
+        "paper/outline.md:33"
+      ],
+      "support_status": "supported",
+      "blocking": false,
+      "required_action": "Compress the surrogate-model section further or explicitly mark it as appendix material in the manuscript outline."
+    }
+  ],
+  "confidence": "high",
+  "recommendation_ceiling": "major_revision"
+}

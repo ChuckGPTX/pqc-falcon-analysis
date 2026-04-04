@@ -1,0 +1,281 @@
+{
+  "version": 1,
+  "paper_title": "Machine-Checked Proof Gaps in the FALCON-512 EUF-CMA Reduction",
+  "date": "2026-04-04",
+  "contact": "working-draft-no-corresponding-author@example.invalid",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "environment": {
+    "execution_context": "Codex local workspace",
+    "cwd": "/Users/chuckcrawley/Desktop/ AI Projects/AI CHUCK/pqc-falcon-analysis",
+    "os": "macOS",
+    "python_version": "3.13.2",
+    "package_manager": "lake plus uv-managed virtual environment",
+    "virtual_environment": "/Users/chuckcrawley/.gpd/venv",
+    "required_packages": [
+      {
+        "package": "lean4",
+        "version": "v4.28.0",
+        "purpose": "Compile the proof-gap and surrogate-model formalizations"
+      },
+      {
+        "package": "mathlib4",
+        "version": "v4.28.0",
+        "purpose": "Standard library dependency for the Lean formalization"
+      },
+      {
+        "package": "python",
+        "version": "3.13.2",
+        "purpose": "Run GPD validation and review-support tooling"
+      }
+    ],
+    "lock_file": "artifacts/aristotle-proof-gap-analysis/lake-manifest.json",
+    "system_requirements": {
+      "operating_systems": [
+        "macOS"
+      ],
+      "architectures": [
+        "arm64",
+        "x86_64"
+      ],
+      "compiler": "Lean lake toolchain",
+      "gpu": ""
+    },
+    "latex_toolchain": "pdflatex unavailable in current environment",
+    "network_access": "restricted during this review run"
+  },
+  "input_data": [
+    {
+      "name": "proof-gap-analysis-report",
+      "source": "local artifact",
+      "version_or_date": "2026-04-04",
+      "download_url": "",
+      "checksum_sha256": "abffc35e3b9f6c1697f49da520fb3246d9aaccbc6385073c37649b726964db73",
+      "license": "local project artifact",
+      "transformations": "None"
+    },
+    {
+      "name": "surrogate-model-summary",
+      "source": "local artifact",
+      "version_or_date": "2026-04-04",
+      "download_url": "",
+      "checksum_sha256": "1986cec43fc3b3a347ec02ad8342c042132c7cf0d3184ead865a9f5490549973",
+      "license": "local project artifact",
+      "transformations": "None"
+    }
+  ],
+  "generated_data": [
+    {
+      "name": "manuscript-draft",
+      "script": "paper/main.tex",
+      "parameters": {
+        "target_length": "6-10 pages",
+        "audience": "PQC plus Lean/Mathlib"
+      },
+      "size": "text-only LaTeX draft",
+      "checksum_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "resource": "Falcon specification v1.2",
+      "access_method": "manuscript bibliography",
+      "restrictions": "open"
+    },
+    {
+      "resource": "Re'nyi-divergence references (ASIACRYPT 2015, 2017)",
+      "access_method": "manuscript bibliography",
+      "restrictions": "open"
+    }
+  ],
+  "execution_steps": [
+    {
+      "name": "inspect-manuscript-package",
+      "command": "Review the files listed in paper/ARTIFACT-MANIFEST.json",
+      "outputs": [
+        "paper/main.tex",
+        "paper/title-and-abstract.md",
+        "paper/tables/gap-summary.tex"
+      ],
+      "stochastic": false,
+      "expected_wall_time": "10 min",
+      "parallel_group": ""
+    },
+    {
+      "name": "build-proof-gap-formalization",
+      "command": "cd artifacts/aristotle-proof-gap-analysis && lake build",
+      "outputs": [
+        "artifacts/aristotle-proof-gap-analysis/.lake/build"
+      ],
+      "stochastic": false,
+      "expected_wall_time": "5-15 min",
+      "parallel_group": "lean-builds"
+    },
+    {
+      "name": "build-surrogate-formalization",
+      "command": "cd artifacts/aristotle-surrogate-model && lake build",
+      "outputs": [
+        "artifacts/aristotle-surrogate-model/.lake/build"
+      ],
+      "stochastic": false,
+      "expected_wall_time": "5-15 min",
+      "parallel_group": "lean-builds"
+    },
+    {
+      "name": "compile-manuscript",
+      "command": "pdflatex paper/main.tex",
+      "outputs": [
+        "paper/main.pdf"
+      ],
+      "stochastic": false,
+      "expected_wall_time": "1-5 min",
+      "parallel_group": ""
+    }
+  ],
+  "expected_results": [
+    {
+      "quantity": "main theorem citation",
+      "expected_value": "falcon_security_reduction appears in paper/main.tex and maps to SecurityReduction.lean",
+      "tolerance": "exact theorem-name match",
+      "script": "paper/main.tex",
+      "figure_or_table": "The Reduction and Its Lean Encoding"
+    },
+    {
+      "quantity": "full gap taxonomy",
+      "expected_value": "12 gaps represented with GAP 7 and GAP 10 emphasized",
+      "tolerance": "all 12 rows present",
+      "script": "paper/tables/gap-summary.tex",
+      "figure_or_table": "Table gap-summary"
+    },
+    {
+      "quantity": "no-attack boundary",
+      "expected_value": "manuscript states that no forgery attack is constructed",
+      "tolerance": "explicit prose statement present",
+      "script": "paper/main.tex",
+      "figure_or_table": "Abstract and Supporting Surrogate-Model Stress Test"
+    }
+  ],
+  "build_status": {
+    "latex": {
+      "status": "blocked_local",
+      "detail": "pdflatex is not installed in the current execution environment."
+    },
+    "proof_gap_lean_project": {
+      "status": "present",
+      "path": "artifacts/aristotle-proof-gap-analysis/",
+      "detail": "Lean project files and toolchain manifest are present in the repo."
+    },
+    "surrogate_model_lean_project": {
+      "status": "present",
+      "path": "artifacts/aristotle-surrogate-model/",
+      "detail": "Supporting Lean surrogate-model project files are present in the repo."
+    }
+  },
+  "artifact_dependencies": [
+    {
+      "path": "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
+      "role": "canonical machine-checked gap summary"
+    },
+    {
+      "path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean",
+      "role": "main reduction theorem source"
+    },
+    {
+      "path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RejectionSampling.lean",
+      "role": "GAP 7 theorem source"
+    },
+    {
+      "path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RandomOracle.lean",
+      "role": "GAP 10 theorem source"
+    },
+    {
+      "path": "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+      "role": "supporting surrogate-model source"
+    }
+  ],
+  "output_files": [
+    {
+      "path": "paper/main.tex",
+      "description": "Primary LaTeX manuscript draft",
+      "approximate_size": "6 KB",
+      "checksum_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/tables/gap-summary.tex",
+      "description": "Complete 12-gap summary table",
+      "approximate_size": "2 KB",
+      "checksum_sha256": "31527ef737b35b7bcc1b53290075aceb529992992000709d73ba384fd25cca93",
+      "approximate_checksum": false
+    }
+  ],
+  "resource_requirements": [
+    {
+      "step": "inspect-manuscript-package",
+      "cpu_cores": 1,
+      "memory_gb": 1.0,
+      "gpu": "",
+      "wall_time": "10 min",
+      "notes": "Human inspection only"
+    },
+    {
+      "step": "build-proof-gap-formalization",
+      "cpu_cores": 4,
+      "memory_gb": 4.0,
+      "gpu": "",
+      "wall_time": "5-15 min",
+      "notes": "Lean build for the proof-gap project"
+    },
+    {
+      "step": "build-surrogate-formalization",
+      "cpu_cores": 4,
+      "memory_gb": 4.0,
+      "gpu": "",
+      "wall_time": "5-15 min",
+      "notes": "Lean build for the surrogate-model project"
+    },
+    {
+      "step": "compile-manuscript",
+      "cpu_cores": 2,
+      "memory_gb": 2.0,
+      "gpu": "",
+      "wall_time": "1-5 min",
+      "notes": "Requires a local LaTeX installation"
+    }
+  ],
+  "minimum_viable": "4 CPU cores, 4 GB RAM, Lean lake toolchain, and a local LaTeX installation for PDF generation",
+  "recommended": "4+ CPU cores, 8 GB RAM, both Lean projects cached locally, and pdflatex installed",
+  "random_seeds": [],
+  "seeding_strategy": "No stochastic execution step is required for the core manuscript and Lean-source inspection workflow.",
+  "known_platform_differences": [
+    {
+      "platform": "environments without pdflatex",
+      "issue": "The manuscript PDF cannot be regenerated locally.",
+      "workaround": "Treat LaTeX compilation as deferred until a TeX distribution is installed."
+    }
+  ],
+  "verification_steps": [
+    "Inspect the manuscript package against paper/ARTIFACT-MANIFEST.json.",
+    "Rebuild the Lean proof-gap and surrogate-model projects with lake build.",
+    "Compile the manuscript once a TeX distribution is installed and compare the resulting PDF against the reviewed draft."
+  ],
+  "manifest_created": "2026-04-04T00:00:00Z",
+  "last_verified": "2026-04-04T00:00:00Z",
+  "last_verified_platform": "Codex macOS workspace",
+  "review_time_caveats": [
+    "The manuscript bibliography is inline in paper/main.tex; there is no separate .bib file yet.",
+    "No local LaTeX compilation result is available from this environment."
+  ],
+  "reproducibility_scope": {
+    "can_reproduce_now": "partial",
+    "what_is_reproducible": [
+      "Inspection of the manuscript package",
+      "Inspection of the Lean proof-gap sources and analysis report",
+      "Inspection of the supporting surrogate-model summary"
+    ],
+    "what_is_not_reproduced_in_this_environment": [
+      "A fresh LaTeX build of the manuscript PDF",
+      "A fresh Lean build log captured during this review round"
+    ]
+  }
+}

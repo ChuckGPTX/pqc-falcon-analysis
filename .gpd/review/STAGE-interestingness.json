@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "round": 1,
+  "stage_id": "interestingness",
+  "stage_kind": "interestingness",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims_reviewed": [
+    "CLM-001",
+    "CLM-002",
+    "CLM-003",
+    "CLM-005"
+  ],
+  "summary": "The core result is interesting enough for an ePrint note and plausibly interesting for the formal-verification community, but the current draft is not yet conference-ready because it has not fully earned its venue-facing framing through related-work positioning and a tighter audit trail for the twelve-gap claim.",
+  "strengths": [
+    "The paper has a clear thesis and a nontrivial primary technical result.",
+    "The manuscript is stronger as a formal-verification and concrete-security note than as a hardware-security narrative."
+  ],
+  "findings": [],
+  "confidence": "medium",
+  "recommendation_ceiling": "major_revision"
+}

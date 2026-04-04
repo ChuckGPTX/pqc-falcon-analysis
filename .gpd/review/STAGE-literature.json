@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "round": 1,
+  "stage_id": "literature",
+  "stage_kind": "literature",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims_reviewed": [
+    "CLM-003",
+    "CLM-005"
+  ],
+  "summary": "The cryptographic backbone is present through the Falcon specification and the two Re'nyi-divergence references, but the paper is under-positioned for the stated dual audience because it lacks explicit Lean / mathlib citations and has no compact related-work paragraph explaining the paper's place in the formal-verification ecosystem.",
+  "strengths": [
+    "The draft already cites the primary Falcon and Re'nyi references needed for the GAP 7 discussion.",
+    "The Phase 1 audit successfully prevents unsupported hardware-to-attack extrapolation from creeping back into the literature framing."
+  ],
+  "findings": [
+    {
+      "issue_id": "REF-002",
+      "claim_ids": [
+        "CLM-005"
+      ],
+      "severity": "major",
+      "summary": "The manuscript is not yet adequately positioned for the Lean / Mathlib audience or for a CRYPTO / Eurocrypt-level novelty discussion.",
+      "rationale": "The paper claims a dual PQC and formal-verification audience, but the current bibliography omits standard Lean and mathlib citations and the draft lacks a related-work paragraph situating the contribution as a formal verification result rather than only a proof-gap note.",
+      "evidence_refs": [
+        "paper/bibliography-pass.md#Formal-Methods Context Still Needed",
+        "paper/outline.md#Target",
+        "paper/main.tex#thebibliography"
+      ],
+      "manuscript_locations": [
+        "paper/bibliography-pass.md:34",
+        "paper/outline.md:5",
+        "paper/main.tex:104"
+      ],
+      "support_status": "partially_supported",
+      "blocking": true,
+      "required_action": "Add explicit Lean 4 and mathlib citations and insert a compact related-work / positioning paragraph that explains the paper's novelty, scope, and venue path."
+    }
+  ],
+  "confidence": "high",
+  "recommendation_ceiling": "major_revision"
+}

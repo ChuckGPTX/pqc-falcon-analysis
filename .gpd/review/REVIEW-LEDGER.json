@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "round": 1,
+  "manuscript_path": "paper/main.tex",
+  "issues": [
+    {
+      "issue_id": "REF-001",
+      "opened_by_stage": "reader",
+      "severity": "major",
+      "blocking": true,
+      "claim_ids": [
+        "CLM-001",
+        "CLM-002"
+      ],
+      "summary": "The manuscript cites formal/proof-gap-analysis/... paths that do not exist in the current checkout.",
+      "rationale": "This breaks the paper's source-audit trail for the central formal-verification claim and creates a reproducibility mismatch between the manuscript and the repository.",
+      "evidence_refs": [
+        "paper/main.tex:44",
+        "paper/main.tex:76",
+        "paper/bibliography-pass.md:14",
+        "paper/consistency-pass.md:5",
+        "paper/ARTIFACT-MANIFEST.json"
+      ],
+      "required_action": "Normalize the manuscript and support notes to the actual artifacts/... paths, or explicitly explain the alias mapping in the manuscript itself.",
+      "status": "open"
+    },
+    {
+      "issue_id": "REF-002",
+      "opened_by_stage": "literature",
+      "severity": "major",
+      "blocking": true,
+      "claim_ids": [
+        "CLM-005"
+      ],
+      "summary": "The draft lacks the formal-methods citations and related-work positioning needed for its stated PQC plus Lean/Mathlib audience and for a CRYPTO/Eurocrypt-style framing.",
+      "rationale": "The manuscript claims a dual audience, but the bibliography omits standard Lean and mathlib citations and the body lacks a compact positioning paragraph explaining novelty and venue fit.",
+      "evidence_refs": [
+        "paper/bibliography-pass.md:34",
+        "paper/outline.md:5",
+        "paper/main.tex:104"
+      ],
+      "required_action": "Add Lean 4 and mathlib citations and insert a concise related-work / positioning paragraph in the manuscript.",
+      "status": "open"
+    },
+    {
+      "issue_id": "REF-003",
+      "opened_by_stage": "math",
+      "severity": "major",
+      "blocking": true,
+      "claim_ids": [
+        "CLM-002"
+      ],
+      "summary": "The full twelve-gap table is not yet anchored with theorem-level precision across all rows.",
+      "rationale": "A central machine-checked taxonomy should let readers trace each gap to an exact theorem or state explicitly when a row is report-level rather than theorem-level evidence.",
+      "evidence_refs": [
+        "paper/tables/gap-summary.tex:8",
+        "paper/figure-table-plan.md:11",
+        "paper/consistency-pass.md:3"
+      ],
+      "required_action": "Tighten the gap-table anchors and add a compact theorem-to-source mapping note or table for the manuscript's core claims.",
+      "status": "open"
+    },
+    {
+      "issue_id": "REF-004",
+      "opened_by_stage": "reader",
+      "severity": "minor",
+      "blocking": false,
+      "claim_ids": [
+        "CLM-004"
+      ],
+      "summary": "The surrogate-model section should be compressed further so the theorem and gap taxonomy dominate the main text.",
+      "rationale": "The section is already disciplined, but it still occupies more narrative space than necessary for a six-to-ten-page theorem-first paper.",
+      "evidence_refs": [
+        "paper/main.tex:90",
+        "paper/outline.md:33"
+      ],
+      "required_action": "Compress the supporting section and signal more clearly that it can move to an appendix or follow-up note.",
+      "status": "open"
+    }
+  ]
+}

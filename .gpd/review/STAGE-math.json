@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "round": 1,
+  "stage_id": "math",
+  "stage_kind": "math",
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims_reviewed": [
+    "CLM-001",
+    "CLM-002",
+    "CLM-003"
+  ],
+  "summary": "The theorem statements and the dominant GAP 7 / GAP 10 discussion are faithful to the source artifacts, but the full 12-gap taxonomy is not yet audited with the same precision because many rows still point only to generic report-level anchors rather than exact theorem or file-level evidence.",
+  "strengths": [
+    "The manuscript states falcon_security_reduction with the explicit error-term decomposition and keeps Q_H and Q_S visible.",
+    "The GAP 7 section now cites falcon512_dominant_error by exact theorem name."
+  ],
+  "findings": [
+    {
+      "issue_id": "REF-003",
+      "claim_ids": [
+        "CLM-002"
+      ],
+      "severity": "major",
+      "summary": "The gap table does not yet give sufficiently precise theorem-to-source anchors for the full twelve-gap claim.",
+      "rationale": "A paper whose central contribution is a machine-checked twelve-gap taxonomy should let readers trace each gap to a precise Lean theorem or, when that is impossible, explicitly mark the row as report-level rather than theorem-level evidence. Several rows currently stop at generic phrases such as 'Formal gap report' or file-level labels.",
+      "evidence_refs": [
+        "paper/tables/gap-summary.tex#tab:gaps",
+        "paper/figure-table-plan.md#Theorem-to-source mapping table",
+        "paper/consistency-pass.md#Theorem Mapping"
+      ],
+      "manuscript_locations": [
+        "paper/tables/gap-summary.tex:8",
+        "paper/tables/gap-summary.tex:18",
+        "paper/figure-table-plan.md:11"
+      ],
+      "support_status": "partially_supported",
+      "blocking": true,
+      "required_action": "Tighten the gap table so each row has an exact theorem anchor where available, and add a compact theorem-to-source mapping table or boxed note for the core manuscript claims."
+    }
+  ],
+  "confidence": "high",
+  "recommendation_ceiling": "major_revision"
+}

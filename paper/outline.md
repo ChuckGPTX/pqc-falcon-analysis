@@ -14,6 +14,7 @@
 - Problem statement: concrete loss accounting in the FALCON-512 EUF-CMA reduction remains hard to audit from prose alone.
 - Contribution summary: Lean 4 formalization, explicit theorem-level loss decomposition, 12 machine-checked gaps, critical role of GAP 7 and GAP 10.
 - Boundary statement: no practical forgery attack is constructed; supporting hardware-surrogate material is not the paper's headline.
+- Positioning paragraph: explain the paper's place relative to the Falcon proof literature and to Lean / Mathlib formal verification.
 - Target length: 1.0-1.5 pages
 
 ### 2. The Reduction and Its Lean Encoding
@@ -21,6 +22,7 @@
 - Present `falcon_security_reduction`.
 - Define the explicit loss terms and the meaning of each delta term.
 - Explain what is machine-checked in Lean 4 and what "no `sorry`" means for this development.
+- Include a compact theorem-to-source mapping table for the load-bearing manuscript claims.
 - Target length: 1.5-2.0 pages
 
 ### 3. Twelve Machine-Checked Proof Gaps
@@ -39,11 +41,11 @@
 
 ### 5. Supporting Surrogate-Model Stress Test
 
-- One short subsection only.
+- One compact paragraph or very short subsection only.
 - State that the noisy quantum-sampler thought experiment makes the reduction vacuous in its artificial model.
 - State immediately that this does not amount to a deployed-system Falcon break and does not construct a forgery attack.
 - If page pressure grows, this is the first section to compress or migrate into an appendix.
-- Target length: 0.5-1.0 page
+- Target length: 0.25-0.5 page
 
 ### 6. Conclusion
 
@@ -59,7 +61,7 @@
 
 ## Drafting Constraints
 
-- The main theorem section must stay mathematically faithful to `formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`.
+- The main theorem section must stay mathematically faithful to `artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`.
 - The gap taxonomy must account for all 12 gaps.
 - The supporting surrogate material must remain visibly subordinate to the theorem-and-gap narrative.
 - The title, abstract, introduction, and conclusion must all preserve the explicit no-attack boundary.

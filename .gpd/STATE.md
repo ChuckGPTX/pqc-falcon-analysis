@@ -5,7 +5,7 @@
 See: `.gpd/PROJECT.md` (updated 2026-04-04)
 
 **Core research question:** What are the explicit, machine-checked proof gaps in FALCON-512's EUF-CMA security reduction, and what do they imply for concrete security parameter selection?
-**Current focus:** Phase 3 - Internal Peer Review
+**Current focus:** Phase 4 - IACR ePrint Submission Preparation
 
 **Convention Lock:**
 - Standard physics-sign convention fields remain unset because this is a cryptography / formal-verification project rather than a field-theory derivation project.
@@ -16,17 +16,17 @@ See: `.gpd/PROJECT.md` (updated 2026-04-04)
 **Current Phase:** 3
 **Current Phase Name:** Internal Peer Review
 **Total Phases:** 4
-**Current Plan:** 0
-**Total Plans in Phase:** 0
-**Status:** Ready to plan
+**Current Plan:** 2
+**Total Plans in Phase:** 2
+**Status:** Complete; next step is Phase 4 planning
 **Last Activity:** 2026-04-04
-**Last Activity Description:** Completed quick task 002: manuscript dominant-error citation and proof-gap path update
+**Last Activity Description:** Completed Phase 3 internal peer review and revised the manuscript package to close the blocker set
 
-**Progress:** [█████░░░░░] 50%
+**Progress:** [███████░░░] 75%
 
 ## Active Calculations
 
-Phase 2 manuscript artifacts were produced; no active calculations are running.
+Phase 3 review and revision artifacts were produced; no active calculations are running.
 
 ## Intermediate Results
 
@@ -34,18 +34,20 @@ Phase 2 manuscript artifacts were produced; no active calculations are running.
 - The existing Lean artifacts identify 12 machine-checked proof gaps with GAP 7 and GAP 10 as the dominant concrete-security findings.
 - The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.
 - Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim.
+- Phase 3 produced a full staged internal review dossier with a `major_revision` decision that was then answered in `.gpd/AUTHOR-RESPONSE.md` and `.gpd/paper/REFEREE_RESPONSE.md`.
+- The revised manuscript now uses the actual `artifacts/aristotle-proof-gap-analysis/...` paths, adds Lean 4 and mathlib citations, and includes a theorem-to-source mapping table.
 
 ## Open Questions
 
-- Should the surrogate hardware-noise section stay in the main text or move to an appendix?
-- What exact title and abstract wording best balances the PQC and Lean / Mathlib audiences?
-- What is the cleanest reader-facing presentation of GAP 7 and GAP 10 without dropping the Renyi-divergence caveat?
+- Should the surrogate hardware-noise section remain in the main text for the ePrint version or move fully to an appendix in the venue-targeted revision?
+- What Phase 4 submission metadata and packaging details still need manual completion once LaTeX compilation is available?
 
 ## Performance Metrics
 
 | Label | Duration | Tasks | Files |
 | ----- | -------- | ----- | ----- |
 | Phase 1 audit | one session | 4 deliverables + 2 plans | 20+ |
+| Phase 3 review | one session | strict preflight + staged panel + revision pass | 20+ |
 
 ## Accumulated Context
 
@@ -58,6 +60,7 @@ Phase 2 manuscript artifacts were produced; no active calculations are running.
 - [Phase 2]: Executed Phase 2 and produced the first manuscript draft package. — The title/abstract, outline, figure-table plan, LaTeX draft, gap table, bibliography pass, and theorem-consistency pass now exist and shift the next bottleneck to internal peer review.
 - [Phase quick-001]: Quick task 001: draft summary and theorem-name audit — Ad-hoc review completed outside planned phases
 - [Phase quick-002]: Quick task 002: dominant-error citation and proof-gap path normalization — Patched the manuscript to cite falcon512_dominant_error explicitly and aligned paper-package proof-gap references to the requested formal path convention
+- [Phase 3]: Internal peer review required major revision on auditability and positioning, and the revised manuscript now closes the review blocker set while preserving the no-attack boundary.
 
 ### Active Approximations
 
@@ -79,5 +82,5 @@ Phase 2 manuscript artifacts were produced; no active calculations are running.
 ## Session Continuity
 
 **Last session:** 2026-04-04
-**Stopped at:** Ready to start Phase 3 internal peer review on the new manuscript package
+**Stopped at:** Ready to start Phase 4 submission-preparation planning on the internally reviewed manuscript package
 **Resume file:** `.gpd/ROADMAP.md`

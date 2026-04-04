@@ -1,3 +1,13 @@
+---
+phase: "01"
+plan: "01"
+depth: standard
+provides:
+  - claim-ledger
+  - assumption-chain
+completed: 2026-04-03
+---
+
 # Plan 01 Summary
 
 Plan 01 completed the evidence inventory for the folder.

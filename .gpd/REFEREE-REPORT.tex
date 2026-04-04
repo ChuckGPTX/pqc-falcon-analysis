@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Internal Referee Report}
+
+\textbf{Round:} 1\\
+\textbf{Target:} \texttt{paper/main.tex}\\
+\textbf{Recommendation:} \texttt{major\_revision}\\
+\textbf{Confidence:} \texttt{high}
+
+\subsection*{Blocking Issues}
+
+\begin{enumerate}
+\item \texttt{REF-001}: The manuscript cites \texttt{formal/proof-gap-analysis/...} paths that do not exist in the current checkout, which weakens the paper's theorem-to-source audit trail.
+\item \texttt{REF-002}: The draft lacks Lean 4 and mathlib citations and does not yet position itself adequately for the stated PQC plus Lean/Mathlib audience.
+\item \texttt{REF-003}: The twelve-gap table is not yet anchored with theorem-level precision across all rows, which is too weak for a paper centered on a machine-checked taxonomy.
+\end{enumerate}
+
+\subsection*{Non-Blocking Issue}
+
+\begin{itemize}
+\item \texttt{REF-004}: Compress the supporting surrogate-model section so the theorem-and-gap narrative dominates the main text.
+\end{itemize}
+
+\subsection*{Verdict}
+
+The core theorem story looks sound enough for continued development, but the manuscript is not yet review-ready. The needed revisions are auditability, literature positioning, and focus, not new scientific results.
+
+\end{document}

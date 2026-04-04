@@ -3,12 +3,16 @@
 ## Theorem Mapping
 
 - Manuscript theorem name: `falcon_security_reduction`
-  - Source: `formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`
+  - Source: `artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`
   - Status: preserve exactly
 
 - Manuscript dominant-error statement: `falcon512_dominant_error`
-  - Source: `formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`
+  - Source: `artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean`
   - Status: preserve the exact theorem-name citation and the interpretation that `delta_rej` dominates the other explicit delta terms in the quoted concrete bound
+
+- Theorem-to-source mapping artifact
+  - Source: `paper/main.tex` Table `tab:theorem-map`
+  - Status: added to the revised manuscript so the load-bearing theorem names are visible in one place
 
 ## Explicit Error Terms
 
@@ -43,7 +47,7 @@ Status: keep both factors explicit; do not hide them inside prose summaries.
   - minor: GAP 2, GAP 4, GAP 12
   - mitigated: GAP 5, GAP 8, GAP 9, GAP 11
 
-Status: preserved in `paper/tables/gap-summary.tex` and referenced consistently in the draft.
+Status: preserved in `paper/tables/gap-summary.tex` and now anchored with theorem-level precision or explicit edge-case anchors row by row.
 
 ## GAP 7 Wording Check
 
@@ -68,3 +72,8 @@ Status: preserved in the draft.
   - any title / abstract / conclusion that makes the hardware benchmark the headline
 
 Status: supporting surrogate discussion remains explicitly bounded and subordinate.
+
+## Path Consistency Check
+
+- Manuscript source paths now match the actual repository layout under `artifacts/aristotle-proof-gap-analysis/`.
+- The earlier `formal/proof-gap-analysis/...` alias mismatch has been removed from the revised manuscript package.

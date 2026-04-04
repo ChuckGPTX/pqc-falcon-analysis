@@ -1,0 +1,35 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{|c|p{2.4cm}|c|p{3.0cm}|p{5.5cm}|}
+\hline
+\textbf{Gap} & \textbf{Issue} & \textbf{Severity} & \textbf{Primary anchor} & \textbf{Concrete note} \\
+\hline
+1 & Gram-Schmidt norm bound & Moderate & \texttt{edge\_case1\_unbalanced\_key} (\texttt{EdgeCases.lean}) & Security argument depends on a high-probability bound rather than a uniform guarantee over all valid keys. \\
+\hline
+2 & Floating-point sampling correlation & Minor & \texttt{gap2\_fp\_composition\_not\_independent}; \texttt{edge\_case2\_error\_propagation} & Sequential rounding introduces correlation beyond the simplest independent-error story. \\
+\hline
+3 & Smoothing-parameter dependence on $\lambda_1$ & Moderate & \texttt{gap3\_smoothing\_requires\_lambda1}; \texttt{edge\_case7\_ntru\_vs\_sis\_gap} & Tightness depends on a lattice minimum-distance assumption not proved directly for all relevant NTRU instances. \\
+\hline
+4 & Key-dependent signing probability & Minor & \texttt{gap4\_signing\_prob\_key\_dependent} & Acceptance probability varies with key quality, so some valid keys are weaker than the average-case picture suggests. \\
+\hline
+5 & CDT precision table & Mitigated & \texttt{gap5\_cdt\_subsumed} & Included for completeness; formally shown to be subsumed at the stated precision. \\
+\hline
+6 & Center-dependent rejection rate & Moderate & \texttt{gap6\_center\_dependent\_M} & Fixed rejection bound $M$ is not uniformly valid for all center offsets. \\
+\hline
+7 & Re'nyi-to-TV square-root loss & Critical & \texttt{gap7\_renyi\_to\_advantage\_loss} & A naive conversion from Re'nyi divergence to total variation turns a $2^{-64}$-scale quantity into an approximately $2^{-32}$ bound. \\
+\hline
+8 & Timing side-channel leakage & Mitigated & \texttt{gap8\_timing\_distinguisher} & Rejection-count variability is distinguishable in principle, but constant-time implementations mitigate the issue in practice. \\
+\hline
+9 & Hash-to-point bias & Mitigated & \texttt{gap9\_per\_coefficient\_bias} & Bias exists without rejection, but the standardized hash-to-point procedure removes it. \\
+\hline
+10 & Random-oracle programming loss & Critical & \texttt{gap10\_rom\_programming\_loss}; \texttt{gap10\_forking\_lemma\_loss} & The reduction loses a factor of $Q_H$, pushing the underlying hardness target to roughly 192 bits for 128-bit forgery security in the stated model. \\
+\hline
+11 & Multi-target loss accounting & Mitigated & \texttt{gap11\_multi\_target\_loss}; \texttt{edge\_case6\_multi\_target} & The tighter reduction avoids the naive $Q_H Q_S$ loss. \\
+\hline
+12 & SHAKE-256 algebraic structure & Minor & \texttt{shake256\_collision\_negligible} & No concrete attack is known, but the ROM-to-instantiation boundary remains explicit. \\
+\hline
+\end{tabular}
+\caption{All twelve machine-checked proof gaps identified in the Lean 4 formalization of the FALCON-512 EUF-CMA reduction. GAP~7 and GAP~10 are the dominant concrete-security findings.}
+\label{tab:gaps}
+\end{table*}

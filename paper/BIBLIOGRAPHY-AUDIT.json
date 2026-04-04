@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "manuscript_path": "paper/main.tex",
+  "coverage": {
+    "falcon_specification": {
+      "status": "present",
+      "evidence": [
+        "paper/main.tex bibliography item falconSpec"
+      ],
+      "note": "The Falcon specification is cited inline in the manuscript bibliography."
+    },
+    "renyi_divergence_references": {
+      "status": "present",
+      "evidence": [
+        "paper/main.tex bibliography items baiRenyi and prestRenyi"
+      ],
+      "note": "The two main Re'nyi-divergence references are present."
+    },
+    "local_artifact_citation_coverage": {
+      "status": "present",
+      "evidence": [
+        "paper/main.tex prose references to SecurityReduction.lean",
+        "paper/bibliography-pass.md",
+        "paper/consistency-pass.md"
+      ],
+      "issues": []
+    },
+    "formal_methods_context": {
+      "status": "present",
+      "required_additions": [],
+      "note": "The manuscript bibliography now includes standard Lean 4 and mathlib citations."
+    },
+    "venue_positioning_context": {
+      "status": "adequate",
+      "required_additions": [],
+      "note": "The revised introduction now includes a compact positioning paragraph for the PQC and Lean/Mathlib audiences."
+    }
+  },
+  "must_cite_sources": [
+    {
+      "id": "falcon-spec-v1.2",
+      "status": "present"
+    },
+    {
+      "id": "bai-asiacrypt-2015",
+      "status": "present"
+    },
+    {
+      "id": "prest-asiacrypt-2017",
+      "status": "present"
+    },
+    {
+      "id": "lean4-citation",
+      "status": "present"
+    },
+    {
+      "id": "mathlib4-citation",
+      "status": "present"
+    }
+  ],
+  "review_ready": true,
+  "reviewer_note": "The bibliography now covers the cryptographic backbone, the local artifact anchors, and the formal-methods stack named by the manuscript."
+}

@@ -28,7 +28,7 @@ This draft takes a theorem-first approach. Instead of retelling the FALCON proof
 
 The main point is not that FALCON is practically broken. It is not. The point is that theorem-level loss accounting matters, and that a machine-checked representation of the reduction exposes exactly where the concrete-security story depends on nontrivial proof choices. This includes the need to reason carefully about the Re'nyi framework rather than collapsing everything into total variation, and the need to keep the $Q_H$ loss explicit when translating reduction quality into required underlying hardness.
 
-The repository also contains a supporting surrogate-model stress test based on a noisy quantum-sampler thought experiment and a local IBM Heron benchmark. We keep that material explicitly secondary. It provides a cautionary example of how quickly proof guarantees can become vacuous inside an artificial model, but it does not construct a forgery attack and it does not describe deployed Falcon implementations.
+The repository also contains a supporting surrogate-model stress test based on an artificial noisy quantum-sampler model. We keep that material explicitly secondary. It provides a cautionary example of how quickly proof guarantees can become vacuous inside an artificial model, but it does not construct a forgery attack and it does not describe deployed Falcon implementations.
 
 \paragraph{Contributions.}
 This draft makes four contributions:
@@ -39,9 +39,12 @@ This draft makes four contributions:
 \item a source-disciplined framing of supporting surrogate-model evidence that preserves the explicit no-attack boundary.
 \end{enumerate}
 
+\paragraph{Positioning.}
+This paper sits between cryptographic proof analysis and proof-assistant formalization. On the cryptographic side, we stay close to the Falcon specification and to the Re'nyi-divergence proof machinery used to interpret GAP~7 \cite{falconSpec,baiRenyi,prestRenyi}. On the formal-methods side, the contribution is a Lean 4 / Mathlib artifact that turns the reduction's load-bearing approximations into named objects that can be cited and audited \cite{lean4,mathlib}. The result is not an end-to-end implementation verification and it is not an attack paper. It is a theorem-level loss audit of the published reduction, written first for ePrint circulation and only secondarily as a seed for a later CRYPTO / Eurocrypt submission.
+
 \section{The Reduction and Its Lean Encoding}
 
-The formal development is organized around the theorem \texttt{falcon\_security\_reduction} in \texttt{formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}. It packages the reduction from EUF-CMA forgery to underlying NTRU-SIS hardness while exposing every intermediate loss term as a named field of the structure \texttt{ReductionErrors}. The resulting bound is
+The formal development is organized around the theorem \texttt{falcon\_security\_reduction} in \texttt{artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}. It packages the reduction from EUF-CMA forgery to underlying NTRU-SIS hardness while exposing every intermediate loss term as a named field of the structure \texttt{ReductionErrors}. The resulting bound is
 \begin{equation}
 \label{eq:main-reduction}
 \varepsilon_{\mathrm{forge}} \le Q_H \varepsilon_{\mathrm{SIS}} + \delta_{\mathrm{rej}} + \delta_{\mathrm{fp}} + \delta_{\mathrm{smooth}} + \delta_{\mathrm{hash}} + Q_S \delta_{\mathrm{abort}}.
@@ -56,6 +59,26 @@ Two source-level facts matter especially for the manuscript:
 \item the theorem and its explicit loss decomposition must remain recognizable in reader-facing prose; and
 \item the surrounding discussion must preserve the distinction between a machine-checked formal gap analysis and an actual attack construction.
 \end{enumerate}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Manuscript object} & \textbf{Lean anchor} & \textbf{Repo source} \\
+\hline
+Main reduction bound & \texttt{falcon\_security\_reduction} & \texttt{SecurityReduction.lean} \\
+\hline
+Dominant error term & \texttt{falcon512\_dominant\_error} & \texttt{SecurityReduction.lean} \\
+\hline
+GAP~7 discussion & \texttt{gap7\_renyi\_to\_advantage\_loss} & \texttt{RejectionSampling.lean} \\
+\hline
+GAP~10 discussion & \texttt{gap10\_rom\_programming\_loss} & \texttt{RandomOracle.lean} \\
+\hline
+\end{tabular}
+\caption{Core theorem-to-source mapping for the load-bearing manuscript claims. All files live under \texttt{artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/}.}
+\label{tab:theorem-map}
+\end{table}
 
 \section{Twelve Machine-Checked Proof Gaps}
 
@@ -73,7 +96,7 @@ The point of retaining all twelve gaps in the paper is methodological as much as
 
 \subsection*{GAP 7: Re'nyi-to-total-variation loss}
 
-The Lean theorem \texttt{gap7\_renyi\_to\_advantage\_loss} records a basic but consequential fact: a naive conversion from order-2 Re'nyi divergence to total variation introduces a square-root loss. In small-parameter language, an $\varepsilon$-scale Re'nyi quantity becomes an approximately $\sqrt{\varepsilon}$-scale total-variation quantity. For the concrete scale discussed in the formal gap report, this turns a $2^{-64}$ quantity into an approximately $2^{-32}$ bound. The companion Lean theorem \texttt{falcon512\_dominant\_error}, also in \texttt{formal/proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}, records the corresponding dominance statement for the concrete FALCON-512 error instantiation: the $\delta_{\mathrm{rej}} \approx 2^{-32}$ term dominates $\delta_{\mathrm{fp}}$, $\delta_{\mathrm{smooth}}$, and $\delta_{\mathrm{hash}}$.
+The Lean theorem \texttt{gap7\_renyi\_to\_advantage\_loss} records a basic but consequential fact: a naive conversion from order-2 Re'nyi divergence to total variation introduces a square-root loss. In small-parameter language, an $\varepsilon$-scale Re'nyi quantity becomes an approximately $\sqrt{\varepsilon}$-scale total-variation quantity. For the concrete scale discussed in the formal gap report, this turns a $2^{-64}$ quantity into an approximately $2^{-32}$ bound. The companion Lean theorem \texttt{falcon512\_dominant\_error}, also in \texttt{artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean}, records the corresponding dominance statement for the concrete FALCON-512 error instantiation: the $\delta_{\mathrm{rej}} \approx 2^{-32}$ term dominates $\delta_{\mathrm{fp}}$, $\delta_{\mathrm{smooth}}$, and $\delta_{\mathrm{hash}}$.
 
 This is the source of the headline ``32-bit degradation'' language, but it needs to be stated with care. The published FALCON proof does not simply throw away the Re'nyi structure and convert everything to total variation at the first opportunity. Instead, it relies on maintaining the Re'nyi framework through the reduction. The machine-checked point is therefore conditional and useful: if one reasons naively at the total-variation level, the loss is brutal; if one wants the stronger story, the Re'nyi chain must be carried carefully and explicitly through the entire proof pipeline.
 
@@ -89,11 +112,7 @@ The most important concrete-security lesson is the interaction of GAP~7 and GAP~
 
 \section{Supporting Surrogate-Model Stress Test}
 
-The repository also contains a separate Lean development for a noisy quantum-sampler thought experiment. Inside that artificial model, the reduction can become vacuous at noise levels far above the tiny threshold required by the reduction bound. This is a legitimate supporting observation, but it must be framed correctly.
-
-The correct statement is about proof vacuity inside a surrogate model, not about a practical attack on deployed Falcon. No forgery attack is constructed. Indeed, the surrogate summary is explicit that correctness fails first in the noisy-sampler story: sufficiently noisy outputs become invalid signatures before they become useful attack tools. We therefore keep this material as a short supporting section rather than as the paper's headline result.
-
-This framing matters for two reasons. First, it preserves scientific honesty: the current repository does not close the bridge from a tiny Grover benchmark to a deployed Falcon exploit. Second, it improves the paper itself: the manuscript is strongest when it foregrounds what is truly machine-checked and theorem-level, rather than when it borrows rhetorical energy from a broader hardware-security narrative that the source base does not support.
+The repository also contains a separate Lean development for a noisy quantum-sampler thought experiment. Inside that artificial model, the reduction can become vacuous at noise levels far above the tiny threshold required by the reduction bound. The correct statement is therefore about proof vacuity inside a surrogate model, not about a practical attack on deployed Falcon. No forgery attack is constructed, and the surrogate summary is explicit that correctness fails first in the noisy-sampler story: sufficiently noisy outputs become invalid signatures before they become useful attack tools. We keep this material brief because it is supporting context, not the paper's headline result.
 
 \section{Conclusion}
 
@@ -122,6 +141,16 @@ Thomas Prest.
 Lov K. Grover.
 \newblock A Fast Quantum Mechanical Algorithm for Database Search.
 \newblock STOC 1996.
+
+\bibitem{lean4}
+Leonardo de Moura and Sebastian Ullrich.
+\newblock The Lean 4 Theorem Prover and Programming Language.
+\newblock CADE 2021.
+
+\bibitem{mathlib}
+The mathlib Community.
+\newblock The Lean Mathematical Library.
+\newblock CPP 2020.
 
 \end{thebibliography}
 

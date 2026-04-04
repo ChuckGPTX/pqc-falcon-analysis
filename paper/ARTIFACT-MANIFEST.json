@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "paper_package": [
+    {
+      "path": "paper/main.tex",
+      "kind": "manuscript",
+      "sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+      "role": "primary review target"
+    },
+    {
+      "path": "paper/title-and-abstract.md",
+      "kind": "framing_note",
+      "sha256": "8cef6e0d21fea0926fc024bfbfb7a222b043b5228a47a07376811eb90b45a06a",
+      "role": "reader-facing framing anchor"
+    },
+    {
+      "path": "paper/outline.md",
+      "kind": "outline",
+      "role": "section architecture and page-budget plan"
+    },
+    {
+      "path": "paper/figure-table-plan.md",
+      "kind": "plan_note",
+      "role": "visual payload and theorem-to-source mapping plan"
+    },
+    {
+      "path": "paper/tables/gap-summary.tex",
+      "kind": "table",
+      "sha256": "31527ef737b35b7bcc1b53290075aceb529992992000709d73ba384fd25cca93",
+      "role": "full 12-gap summary table"
+    },
+    {
+      "path": "paper/bibliography-pass.md",
+      "kind": "audit_note",
+      "role": "bibliography coverage and missing-citation note"
+    },
+    {
+      "path": "paper/consistency-pass.md",
+      "kind": "audit_note",
+      "role": "theorem-name, notation, and framing audit"
+    }
+  ],
+  "supporting_artifacts": [
+    {
+      "id": "proof-gap-report",
+      "actual_path": "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md",
+      "sha256": "abffc35e3b9f6c1697f49da520fb3246d9aaccbc6385073c37649b726964db73",
+      "role": "canonical 12-gap summary and concrete-security interpretation",
+      "exists_at_actual_path": true
+    },
+    {
+      "id": "security-reduction-lean",
+      "actual_path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean",
+      "sha256": "b07ba8af6f36a2726fb9e6b25cbecc9319de38f64d12cf3893fad2e62b91a163",
+      "role": "source of falcon_security_reduction and falcon512_dominant_error",
+      "exists_at_actual_path": true
+    },
+    {
+      "id": "rejection-sampling-lean",
+      "actual_path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RejectionSampling.lean",
+      "sha256": "b16443207c2c4ed0c0f96ee91ac7d25c7e909c3ef654f1733a9ee4abf8b85dd0",
+      "role": "source of GAP 6-8 theorems including gap7_renyi_to_advantage_loss",
+      "exists_at_actual_path": true
+    },
+    {
+      "id": "random-oracle-lean",
+      "actual_path": "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RandomOracle.lean",
+      "sha256": "4d7389e714fa3eadfe94f11d441e2474666e831a67b2b3342c51b66d9612857d",
+      "role": "source of GAP 9-12 theorems including gap10_rom_programming_loss",
+      "exists_at_actual_path": true
+    },
+    {
+      "id": "surrogate-summary",
+      "actual_path": "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+      "sha256": "1986cec43fc3b3a347ec02ad8342c042132c7cf0d3184ead865a9f5490549973",
+      "role": "supporting surrogate-model source for the no-attack boundary",
+      "exists_at_actual_path": true
+    },
+    {
+      "id": "phase1-recommendation",
+      "actual_path": ".gpd/phases/01-claim-audit/01-recommendation.md",
+      "role": "anti-overclaim framing guardrail",
+      "exists_at_actual_path": true
+    }
+  ],
+  "path_aliases": [],
+  "review_notes": [
+    "The paper package exists and is internally coherent enough for review.",
+    "The manuscript package now points directly to the actual artifacts/aristotle-proof-gap-analysis/ paths used in this checkout.",
+    "The manuscript does not yet include a separate bibliography file; references currently live inline in paper/main.tex."
+  ]
+}

@@ -2,7 +2,7 @@
   "project_reference": {
     "project_md_updated": null,
     "core_research_question": "What are the explicit, machine-checked proof gaps in FALCON-512's EUF-CMA security reduction, and what do they imply for concrete security parameter selection?",
-    "current_focus": "Phase 3 - Internal Peer Review"
+    "current_focus": "Phase 4 - IACR ePrint Submission Preparation"
   },
   "project_contract": {
     "schema_version": 1,
@@ -846,12 +846,12 @@
     "current_phase": "3",
     "current_phase_name": "Internal Peer Review",
     "total_phases": 4,
-    "current_plan": "0",
-    "total_plans_in_phase": 0,
-    "status": "Ready to plan",
+    "current_plan": "2",
+    "total_plans_in_phase": 2,
+    "status": "Complete; next step is Phase 4 planning",
     "last_activity": "2026-04-04",
-    "last_activity_desc": "Completed quick task 002: manuscript dominant-error citation and proof-gap path update",
-    "progress_percent": 50,
+    "last_activity_desc": "Completed Phase 3 internal peer review and revised the manuscript package to close the blocker set",
+    "progress_percent": 75,
     "paused_at": null
   },
   "active_calculations": [],
@@ -859,12 +859,13 @@
     "`falcon_security_reduction` makes the EUF-CMA reduction error terms explicit.",
     "The existing Lean artifacts identify 12 machine-checked proof gaps with GAP 7 and GAP 10 as the dominant concrete-security findings.",
     "The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.",
-    "Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim."
+    "Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim.",
+    "Phase 3 produced a full staged internal review dossier with a major_revision outcome and a matching author-response package.",
+    "The revised manuscript now uses the actual artifacts/aristotle-proof-gap-analysis/... paths, includes Lean 4 and mathlib citations, and exposes a theorem-to-source mapping table."
   ],
   "open_questions": [
-    "Should the surrogate hardware-noise section stay in the main text or move to an appendix?",
-    "What exact title and abstract wording best balances the PQC and Lean / Mathlib audiences?",
-    "What is the cleanest reader-facing presentation of GAP 7 and GAP 10 without dropping the Renyi-divergence caveat?"
+    "Should the surrogate hardware-noise section remain in the main text for the ePrint version or move fully to an appendix in the venue-targeted revision?",
+    "What Phase 4 submission metadata and packaging details still need manual completion once LaTeX compilation is available?"
   ],
   "performance_metrics": {
     "rows": [
@@ -872,6 +873,12 @@
         "label": "Phase 1 audit",
         "duration": "one session",
         "tasks": "4 deliverables + 2 plans",
+        "files": "20+"
+      },
+      {
+        "label": "Phase 3 review",
+        "duration": "one session",
+        "tasks": "strict preflight + staged panel + revision pass",
         "files": "20+"
       }
     ]
@@ -911,6 +918,11 @@
       "phase": "quick-002",
       "summary": "Quick task 002: dominant-error citation and proof-gap path normalization",
       "rationale": "Patched the manuscript to cite falcon512_dominant_error explicitly and aligned paper-package proof-gap references to the requested formal path convention"
+    },
+    {
+      "phase": "3",
+      "summary": "Executed Phase 3 internal peer review and closed the blocker set in the revised manuscript package.",
+      "rationale": "The staged review identified auditability and positioning blockers; the revised draft now uses the actual proof-gap paths, adds Lean/mathlib citations, tightens the twelve-gap anchors, and records the response trail."
     }
   ],
   "approximations": [],
@@ -940,11 +952,11 @@
     "Rotate the IBM Quantum token in the IBM account because it was previously embedded in the notebook and script."
   ],
   "blockers": [
-    "The exact placement of the surrogate hardware-noise section is still unsettled."
+    "Phase 4 still needs a LaTeX-capable environment for build validation and submission packaging."
   ],
   "session": {
     "last_date": "2026-04-04",
-    "stopped_at": "Ready to start Phase 3 internal peer review on the new manuscript package",
+    "stopped_at": "Ready to start Phase 4 submission-preparation planning on the internally reviewed manuscript package",
     "resume_file": "`.gpd/ROADMAP.md`"
   },
   "_version": 1,

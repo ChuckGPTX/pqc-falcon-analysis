@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "round": 1,
+  "manuscript_path": "paper/main.tex",
+  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "claims": [
+    {
+      "claim_id": "CLM-001",
+      "claim_type": "main_theorem",
+      "summary": "The Lean 4 development formalizes the FALCON-512 EUF-CMA reduction and exposes the explicit loss bound via falcon_security_reduction.",
+      "manuscript_locations": [
+        "paper/main.tex:16",
+        "paper/main.tex:44"
+      ],
+      "direct_evidence": [
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean",
+        "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md"
+      ],
+      "support_status": "supported"
+    },
+    {
+      "claim_id": "CLM-002",
+      "claim_type": "taxonomy",
+      "summary": "The manuscript presents a full twelve-gap taxonomy rather than spotlighting only GAP 7 and GAP 10.",
+      "manuscript_locations": [
+        "paper/main.tex:60",
+        "paper/tables/gap-summary.tex:8"
+      ],
+      "direct_evidence": [
+        "paper/tables/gap-summary.tex",
+        "artifacts/aristotle-proof-gap-analysis/ANALYSIS_REPORT.md"
+      ],
+      "support_status": "partially_supported"
+    },
+    {
+      "claim_id": "CLM-003",
+      "claim_type": "concrete_security",
+      "summary": "GAP 7 and GAP 10 are the dominant concrete-security findings, with the 32-bit degradation path and the roughly 192-bit hardness implication.",
+      "manuscript_locations": [
+        "paper/main.tex:74",
+        "paper/main.tex:80"
+      ],
+      "direct_evidence": [
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RejectionSampling.lean",
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/RandomOracle.lean",
+        "artifacts/aristotle-proof-gap-analysis/RequestProject/Falcon/SecurityReduction.lean"
+      ],
+      "support_status": "supported"
+    },
+    {
+      "claim_id": "CLM-004",
+      "claim_type": "scope_boundary",
+      "summary": "The surrogate-model stress test is explicitly secondary and does not construct a forgery attack on deployed Falcon.",
+      "manuscript_locations": [
+        "paper/main.tex:20",
+        "paper/main.tex:90"
+      ],
+      "direct_evidence": [
+        "artifacts/aristotle-surrogate-model/ARISTOTLE_SUMMARY_bdd5cf21-667c-45e0-b84a-e323aea3f79a.md",
+        ".gpd/phases/01-claim-audit/01-recommendation.md"
+      ],
+      "support_status": "supported"
+    },
+    {
+      "claim_id": "CLM-005",
+      "claim_type": "venue_positioning",
+      "summary": "The draft is positioned for PQC researchers and the Lean / Mathlib community, with ePrint first and CRYPTO 2026 or Eurocrypt 2027 as downstream targets.",
+      "manuscript_locations": [
+        "paper/title-and-abstract.md:13",
+        "paper/outline.md:5"
+      ],
+      "direct_evidence": [
+        "paper/title-and-abstract.md",
+        "paper/outline.md"
+      ],
+      "support_status": "partially_supported"
+    }
+  ]
+}
