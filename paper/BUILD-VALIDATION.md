@@ -2,11 +2,11 @@
 
 **Date:** 2026-04-04  
 **Phase / Plan:** 04 / 04-01  
-**Status:** checkpoint_blocked
+**Status:** clean_local_build
 
 ## Scope
 
-This note records the LaTeX source graph, bibliography strategy, toolchain probe, and the concrete blocker that stops Wave 1 before the final PDF build.
+This note records the LaTeX source graph, bibliography strategy, toolchain probe, exact build sequence, and the concrete Wave 1 result for the Phase 4 ePrint-preparation pass.
 
 ## Resolved Input Graph
 
@@ -29,13 +29,14 @@ No `\includegraphics`, `\bibliography`, `\addbibresource`, or other local TeX so
 
 ## Bibliography Strategy
 
-Current strategy: **inline bibliography in `paper/main.tex`**.
+Final strategy: **inline bibliography in `paper/main.tex`**.
 
-Implications:
+Validation result:
 
-- There is no external `.bib` or generated `.bbl` dependency in the current manuscript tree.
-- "Flattening the bibliography" for this repo means confirming that the inline bibliography is the final explicit source of truth, rather than generating a separate bibliography artifact.
-- This strategy is acceptable only if a clean PDF build confirms there are no hidden citation or bibliography dependencies.
+- The manuscript does not depend on an external `.bib` file.
+- The manuscript does not depend on a generated `.bbl` file.
+- A clean two-pass `pdflatex` build succeeds with the inline bibliography as the sole citation source.
+- The bibliography now includes the Falcon specification, the two R\'{e}nyi-divergence references, Lean 4 / mathlib context, and the additional NIST / Roetteler / Gidney-Eker{\aa} references carried into Phase 4.
 
 ## Toolchain Probe
 
@@ -49,42 +50,46 @@ command -v tectonic
 
 Observed result:
 
-- `pdflatex`: unavailable
+- `pdflatex`: available at `/Library/TeX/texbin/pdflatex`
 - `latexmk`: unavailable
 - `tectonic`: unavailable
 
-## Planned Build Commands
+## Exact Build Command Sequence
 
-Once a TeX-capable environment is available, use:
-
-```sh
-cd paper
-pdflatex -interaction=nonstopmode main.tex
-pdflatex -interaction=nonstopmode main.tex
-```
-
-If `latexmk` is available in the target environment, the preferred equivalent is:
+Wave 1 used the following command sequence:
 
 ```sh
 cd paper
-latexmk -pdf -interaction=nonstopmode main.tex
+/Library/TeX/texbin/pdflatex -interaction=nonstopmode main.tex
+/Library/TeX/texbin/pdflatex -interaction=nonstopmode main.tex
 ```
+
+## Build Result
+
+Artifacts generated:
+
+- `paper/main.pdf` (6 pages)
+- refreshed `paper/main.aux`, `paper/main.log`, and `paper/main.out`
+
+Clean-build checks:
+
+- No undefined citations remain in `paper/main.log`.
+- No undefined references remain in `paper/main.log`.
+- No missing local file errors remain in `paper/main.log`.
+- No LaTeX fatal errors remain in `paper/main.log`.
+
+Non-blocking warnings retained:
+
+- Overfull boxes caused by the long inline Lean source path strings in the manuscript body.
+- Underfull / overfull boxes from the dense 12-gap table layout in `paper/tables/gap-summary.tex`.
+
+These warnings do not block PDF generation or indicate a hidden dependency, but they remain layout cleanup candidates for a later presentation pass.
 
 ## Final Blocker Status
 
-Hard blocker: **no working TeX engine is available in the current environment**.
+There is **no remaining LaTeX-environment blocker** for Phase 4 Wave 1.
 
-This blocks:
+Wave 1 is complete. The remaining Phase 4 checkpoint is Wave 2 metadata collection:
 
-- generation of `paper/main.pdf`,
-- final proof that the inline bibliography strategy is submission-safe,
-- final metadata/first-page checks that depend on the rendered PDF.
-
-## Deferred To Resume
-
-After a TeX-capable environment is available:
-
-1. Build `paper/main.pdf`.
-2. Check for undefined citations, undefined references, and missing package/class errors.
-3. Refresh `paper/BIBLIOGRAPHY-AUDIT.json` and `paper/reproducibility-manifest.json` with the actual build result.
-4. Continue to Phase 4 metadata packaging (`04-02`) only after the PDF build is clean.
+- `paper/main.tex` still uses placeholder first-page author metadata (`Working Draft`).
+- Final ePrint author/contact/category/keywords/license values cannot be inferred safely from the repo and must come from the user before packaging.

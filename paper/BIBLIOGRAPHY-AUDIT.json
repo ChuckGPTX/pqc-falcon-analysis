@@ -3,8 +3,8 @@
   "manuscript_path": "paper/main.tex",
   "final_bibliography_strategy": {
     "mode": "inline_bibliography_in_main_tex",
-    "status": "provisional_pending_clean_build",
-    "note": "The manuscript currently keeps its bibliography inline in paper/main.tex. Phase 4 treats this as the final flattened strategy only if a clean PDF build confirms there is no hidden bibliography dependency."
+    "status": "confirmed_by_clean_two_pass_pdflatex_build",
+    "note": "The manuscript now builds cleanly with an inline bibliography in paper/main.tex and no hidden .bib or generated .bbl dependency."
   },
   "coverage": {
     "falcon_specification": {
@@ -17,28 +17,37 @@
     "renyi_divergence_references": {
       "status": "present",
       "evidence": [
-        "paper/main.tex bibliography items baiRenyi and prestRenyi"
+        "paper/main.tex bibliography items baiRenyi and prestRenyi",
+        "paper/main.tex and paper/tables/gap-summary.tex now render the R\\'{e}nyi accent correctly"
       ],
-      "note": "The two main Re'nyi-divergence references are present."
+      "note": "The two main R\\'{e}nyi-divergence references are present and the manuscript wording now matches the rendered accent form."
+    },
+    "formal_methods_context": {
+      "status": "present",
+      "evidence": [
+        "paper/main.tex bibliography items lean4 and mathlib"
+      ],
+      "note": "The manuscript bibliography includes Lean 4 and mathlib4 context for the formal-verification audience."
+    },
+    "standards_and_resource_context": {
+      "status": "present",
+      "evidence": [
+        "paper/main.tex bibliography items nistPqc, roetteler2017, and gidneyEkera2021"
+      ],
+      "note": "Phase 4 Wave 1 adds the NIST PQC status page and the Roetteler / Gidney-Ekerå resource-estimate anchors to the inline bibliography."
     },
     "local_artifact_citation_coverage": {
       "status": "present",
       "evidence": [
-        "paper/main.tex prose references to SecurityReduction.lean",
-        "paper/bibliography-pass.md",
-        "paper/consistency-pass.md"
+        "paper/main.tex prose references to SecurityReduction.lean, RejectionSampling.lean, and RandomOracle.lean",
+        "paper/BUILD-VALIDATION.md confirms the local input graph closes cleanly"
       ],
       "issues": []
-    },
-    "formal_methods_context": {
-      "status": "present",
-      "required_additions": [],
-      "note": "The manuscript bibliography now includes standard Lean 4 and mathlib citations."
     },
     "venue_positioning_context": {
       "status": "adequate",
       "required_additions": [],
-      "note": "The revised introduction now includes a compact positioning paragraph for the PQC and Lean/Mathlib audiences."
+      "note": "The manuscript still presents the work as a theorem-first formal-verification note for PQC and Lean/Mathlib readers."
     }
   },
   "must_cite_sources": [
@@ -61,10 +70,23 @@
     {
       "id": "mathlib4-citation",
       "status": "present"
+    },
+    {
+      "id": "nist-pqc-status",
+      "status": "present"
+    },
+    {
+      "id": "roetteler-ecdsa",
+      "status": "present"
+    },
+    {
+      "id": "gidney-rsa",
+      "status": "present"
     }
   ],
   "review_ready": true,
-  "submission_ready": false,
-  "reviewer_note": "The bibliography now covers the cryptographic backbone, the local artifact anchors, and the formal-methods stack named by the manuscript.",
-  "submission_blocker": "No TeX engine is available in the current environment, so the inline bibliography strategy has not yet been confirmed by a clean PDF build."
+  "submission_ready": true,
+  "remaining_issues": [],
+  "reviewer_note": "The bibliography now covers the cryptographic backbone, the formal-methods context, and the standards/resource-estimate anchors carried into the submission-preparation phase.",
+  "submission_blocker": null
 }

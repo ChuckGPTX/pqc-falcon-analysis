@@ -4,7 +4,7 @@
   "date": "2026-04-04",
   "contact": "working-draft-no-corresponding-author@example.invalid",
   "manuscript_path": "paper/main.tex",
-  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "manuscript_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce",
   "environment": {
     "execution_context": "Codex local workspace",
     "cwd": "/Users/chuckcrawley/Desktop/ AI Projects/AI CHUCK/pqc-falcon-analysis",
@@ -41,7 +41,7 @@
       "compiler": "Lean lake toolchain",
       "gpu": ""
     },
-    "latex_toolchain": "pdflatex unavailable in current environment",
+    "latex_toolchain": "/Library/TeX/texbin/pdflatex (TeX Live 2026 basic); latexmk and tectonic unavailable",
     "network_access": "restricted during this review run"
   },
   "build_validation_probe": {
@@ -52,7 +52,7 @@
       "command -v tectonic"
     ],
     "results": {
-      "pdflatex": "unavailable",
+      "pdflatex": "/Library/TeX/texbin/pdflatex",
       "latexmk": "unavailable",
       "tectonic": "unavailable"
     }
@@ -86,7 +86,7 @@
         "audience": "PQC plus Lean/Mathlib"
       },
       "size": "text-only LaTeX draft",
-      "checksum_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2"
+      "checksum_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce"
     }
   ],
   "external_dependencies": [
@@ -96,7 +96,7 @@
       "restrictions": "open"
     },
     {
-      "resource": "Re'nyi-divergence references (ASIACRYPT 2015, 2017)",
+      "resource": "R\u00e9nyi-divergence references (ASIACRYPT 2015, 2017)",
       "access_method": "manuscript bibliography",
       "restrictions": "open"
     }
@@ -136,7 +136,7 @@
     },
     {
       "name": "compile-manuscript",
-      "command": "pdflatex paper/main.tex",
+      "command": "cd paper && /Library/TeX/texbin/pdflatex -interaction=nonstopmode main.tex && /Library/TeX/texbin/pdflatex -interaction=nonstopmode main.tex",
       "outputs": [
         "paper/main.pdf"
       ],
@@ -170,8 +170,8 @@
   ],
   "build_status": {
     "latex": {
-      "status": "blocked_local",
-      "detail": "No TeX engine was found during the Phase 4 build-validation probe (`pdflatex`, `latexmk`, and `tectonic` all unavailable)."
+      "status": "built_local",
+      "detail": "A clean two-pass local build succeeded with /Library/TeX/texbin/pdflatex. The remaining warnings are layout-only overfull or underfull boxes from long inline paths and the dense gap table."
     },
     "proof_gap_lean_project": {
       "status": "present",
@@ -210,15 +210,22 @@
     {
       "path": "paper/main.tex",
       "description": "Primary LaTeX manuscript draft",
-      "approximate_size": "6 KB",
-      "checksum_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+      "approximate_size": "16313 bytes",
+      "checksum_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce",
       "approximate_checksum": false
     },
     {
       "path": "paper/tables/gap-summary.tex",
       "description": "Complete 12-gap summary table",
-      "approximate_size": "2 KB",
-      "checksum_sha256": "31527ef737b35b7bcc1b53290075aceb529992992000709d73ba384fd25cca93",
+      "approximate_size": "3020 bytes",
+      "checksum_sha256": "35e9b0fe9f45be615e0b7fc6ed7db48b87294f96111e37f9a53c66f7ff5452e0",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/main.pdf",
+      "description": "Wave 1 clean local PDF build",
+      "approximate_size": "233242 bytes",
+      "checksum_sha256": "3cc920ddf22f87c3e7d50e9a5783361a090226352114ec306c986d2d359e6d61",
       "approximate_checksum": false
     }
   ],
