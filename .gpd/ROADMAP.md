@@ -9,7 +9,7 @@ This roadmap preserves the completed claim audit as a finished framing phase, th
 - [x] **Phase 1: Claim Audit** - Freeze the evidence taxonomy and narrow the repository narrative so the manuscript cannot drift into unsupported hardware-to-attack claims.
 - [x] **Phase 2: Manuscript Framing and First Draft** - Produce the title, abstract, outline, figure / table plan, first LaTeX draft, bibliography pass, and theorem / notation consistency pass.
 - [x] **Phase 3: Internal Peer Review** - Run the GPD peer review panel as a CRYPTO / Eurocrypt reviewer and resolve the resulting issues.
-- [ ] **Phase 4: IACR ePrint Submission Preparation** - Validate the LaTeX source, flatten the bibliography, verify metadata, and package the submission archive.
+- [x] **Phase 4: IACR ePrint Submission Preparation** - Validate the LaTeX source, flatten the bibliography, verify metadata, and package the submission archive.
 
 ## Phase Details
 
@@ -80,8 +80,8 @@ Plans:
 
 Plans:
 
-- [ ] 04-01: Validate LaTeX and flatten the bibliography.
-- [ ] 04-02: Verify metadata and package the submission archive.
+- [x] 04-01: Validate LaTeX and flatten the bibliography.
+- [x] 04-02: Verify metadata and package the submission archive.
 
 ## Progress
 
@@ -90,4 +90,4 @@ Plans:
 | 1. Claim Audit | 2/2 | Complete | 2026-04-03 |
 | 2. Manuscript Framing and First Draft | 2/2 | Complete | 2026-04-04 |
 | 3. Internal Peer Review | 2/2 | Complete | 2026-04-04 |
-| 4. IACR ePrint Submission Preparation | 0/2 | Not started | - |
+| 4. IACR ePrint Submission Preparation | 2/2 | Complete | 2026-04-04 |

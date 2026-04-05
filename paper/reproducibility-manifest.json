@@ -1,10 +1,29 @@
 {
   "version": 1,
   "paper_title": "Machine-Checked Proof Gaps in the FALCON-512 EUF-CMA Reduction",
+  "authors": [
+    "Chuck Crawley"
+  ],
   "date": "2026-04-04",
-  "contact": "working-draft-no-corresponding-author@example.invalid",
+  "contact": "chuckgptx@gmail.com",
+  "affiliation": "Independent Researcher",
+  "eprint_category": "public-key cryptography",
+  "keywords": [
+    "FALCON",
+    "FN-DSA",
+    "post-quantum cryptography",
+    "Lean 4",
+    "formal verification",
+    "lattice signatures",
+    "EUF-CMA",
+    "proof gaps",
+    "Mathlib4",
+    "concrete security"
+  ],
+  "publication_status": "none",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
   "manuscript_path": "paper/main.tex",
-  "manuscript_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce",
+  "manuscript_sha256": "6591d3284d64ce5271ed092fd14a8e8db7c3f13eff0146e2222516eb70ffe16b",
   "environment": {
     "execution_context": "Codex local workspace",
     "cwd": "/Users/chuckcrawley/Desktop/ AI Projects/AI CHUCK/pqc-falcon-analysis",
@@ -86,7 +105,7 @@
         "audience": "PQC plus Lean/Mathlib"
       },
       "size": "text-only LaTeX draft",
-      "checksum_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce"
+      "checksum_sha256": "6591d3284d64ce5271ed092fd14a8e8db7c3f13eff0146e2222516eb70ffe16b"
     }
   ],
   "external_dependencies": [
@@ -171,7 +190,7 @@
   "build_status": {
     "latex": {
       "status": "built_local",
-      "detail": "A clean two-pass local build succeeded with /Library/TeX/texbin/pdflatex. The remaining warnings are layout-only overfull or underfull boxes from long inline paths and the dense gap table."
+      "detail": "A clean two-pass local build succeeded with /Library/TeX/texbin/pdflatex after aligning the manuscript front matter to the final ePrint metadata. The remaining warnings are layout-only overfull or underfull boxes from long inline paths and the dense gap table."
     },
     "proof_gap_lean_project": {
       "status": "present",
@@ -209,9 +228,9 @@
   "output_files": [
     {
       "path": "paper/main.tex",
-      "description": "Primary LaTeX manuscript draft",
-      "approximate_size": "16313 bytes",
-      "checksum_sha256": "5a79908f65067eb4b7c9f6deaf4d94d871e06e6b41a0348dbfd9f31405dd0dce",
+      "description": "Final LaTeX manuscript source aligned to the ePrint metadata",
+      "approximate_size": "16538 bytes",
+      "checksum_sha256": "6591d3284d64ce5271ed092fd14a8e8db7c3f13eff0146e2222516eb70ffe16b",
       "approximate_checksum": false
     },
     {
@@ -223,9 +242,37 @@
     },
     {
       "path": "paper/main.pdf",
-      "description": "Wave 1 clean local PDF build",
-      "approximate_size": "233242 bytes",
-      "checksum_sha256": "3cc920ddf22f87c3e7d50e9a5783361a090226352114ec306c986d2d359e6d61",
+      "description": "Metadata-aligned local PDF build",
+      "approximate_size": "240269 bytes",
+      "checksum_sha256": "d625ce484a2a2e7bcb451ce192d65eaab7d02fbe316dd7f6ba6b02bca177cdb4",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/title-and-abstract.md",
+      "description": "Synchronized title, author, contact, keyword, and abstract note",
+      "approximate_size": "2041 bytes",
+      "checksum_sha256": "979dfc296fd261947541127c14c8597af713a336ecccdc43584cacb7e119f52f",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/submission-metadata.md",
+      "description": "User-approved local ePrint metadata record",
+      "approximate_size": "2651 bytes",
+      "checksum_sha256": "0eb1364be98122e46fb53f01fb5636ae4bc6a940c8fc2fc7ec6fef1a6467552e",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/submission-manifest.txt",
+      "description": "Plain-text manifest of the local ePrint upload bundle",
+      "approximate_size": "254 bytes",
+      "checksum_sha256": "14d33919a6ebb2904c39877f443bb6dd2af5eb34883e6bd5ab40b3bc0e5d4568",
+      "approximate_checksum": false
+    },
+    {
+      "path": "paper/submission.tar.gz",
+      "description": "Verified local upload bundle extracted and checked against the manifest; excludes the reproducibility manifest to avoid a recursive archive checksum dependency",
+      "approximate_size": "213015 bytes",
+      "checksum_sha256": "f8f5d92fa144609576257ab8644b3fb9665c3c086d8aa887ed7b981723e7f42b",
       "approximate_checksum": false
     }
   ],

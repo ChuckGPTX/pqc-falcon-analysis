@@ -1,0 +1,10 @@
+paper/main.pdf
+paper/main.tex
+paper/tables/gap-summary.tex
+paper/title-and-abstract.md
+paper/submission-metadata.md
+paper/ARTIFACT-MANIFEST.json
+paper/BUILD-VALIDATION.md
+paper/BIBLIOGRAPHY-AUDIT.json
+paper/bibliography-pass.md
+paper/consistency-pass.md

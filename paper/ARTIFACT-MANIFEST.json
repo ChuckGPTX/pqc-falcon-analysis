@@ -1,19 +1,31 @@
 {
   "version": 1,
   "manuscript_path": "paper/main.tex",
-  "manuscript_sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+  "manuscript_sha256": "6591d3284d64ce5271ed092fd14a8e8db7c3f13eff0146e2222516eb70ffe16b",
   "paper_package": [
     {
       "path": "paper/main.tex",
       "kind": "manuscript",
-      "sha256": "2b70ff0102d2ba1191ff0ac83e529fb80b95fd15137dfc625f1f50902e49c3c2",
+      "sha256": "6591d3284d64ce5271ed092fd14a8e8db7c3f13eff0146e2222516eb70ffe16b",
       "role": "primary review target"
+    },
+    {
+      "path": "paper/main.pdf",
+      "kind": "pdf",
+      "sha256": "d625ce484a2a2e7bcb451ce192d65eaab7d02fbe316dd7f6ba6b02bca177cdb4",
+      "role": "submission-aligned rendered manuscript"
     },
     {
       "path": "paper/title-and-abstract.md",
       "kind": "framing_note",
-      "sha256": "8cef6e0d21fea0926fc024bfbfb7a222b043b5228a47a07376811eb90b45a06a",
+      "sha256": "979dfc296fd261947541127c14c8597af713a336ecccdc43584cacb7e119f52f",
       "role": "reader-facing framing anchor"
+    },
+    {
+      "path": "paper/submission-metadata.md",
+      "kind": "submission_note",
+      "sha256": "0eb1364be98122e46fb53f01fb5636ae4bc6a940c8fc2fc7ec6fef1a6467552e",
+      "role": "user-approved ePrint metadata record"
     },
     {
       "path": "paper/outline.md",
@@ -28,7 +40,7 @@
     {
       "path": "paper/tables/gap-summary.tex",
       "kind": "table",
-      "sha256": "31527ef737b35b7bcc1b53290075aceb529992992000709d73ba384fd25cca93",
+      "sha256": "35e9b0fe9f45be615e0b7fc6ed7db48b87294f96111e37f9a53c66f7ff5452e0",
       "role": "full 12-gap summary table"
     },
     {
@@ -89,6 +101,7 @@
   "review_notes": [
     "The paper package exists and is internally coherent enough for review.",
     "The manuscript package now points directly to the actual artifacts/aristotle-proof-gap-analysis/ paths used in this checkout.",
-    "The manuscript does not yet include a separate bibliography file; references currently live inline in paper/main.tex."
+    "The manuscript does not yet include a separate bibliography file; references currently live inline in paper/main.tex.",
+    "The package now includes a synchronized submission-metadata note and a final first-page-complete PDF."
   ]
 }

@@ -843,15 +843,15 @@
     }
   },
   "position": {
-    "current_phase": "3",
-    "current_phase_name": "Internal Peer Review",
+    "current_phase": "4",
+    "current_phase_name": "IACR ePrint Submission Preparation",
     "total_phases": 4,
     "current_plan": "2",
     "total_plans_in_phase": 2,
-    "status": "Complete; next step is Phase 4 planning",
+    "status": "Complete",
     "last_activity": "2026-04-04",
-    "last_activity_desc": "Completed Phase 3 internal peer review and revised the manuscript package to close the blocker set",
-    "progress_percent": 75,
+    "last_activity_desc": "Completed Phase 4 packaging with synchronized metadata, a rebuilt PDF, and a verified local submission archive",
+    "progress_percent": 100,
     "paused_at": null
   },
   "active_calculations": [],
@@ -861,11 +861,11 @@
     "The supporting surrogate hardware-noise model is explicitly bounded to an artificial deployment scenario and does not construct a forgery attack.",
     "Phase 1 fixed the narrative boundary: hardware and surrogate artifacts are supporting context, not the paper's main claim.",
     "Phase 3 produced a full staged internal review dossier with a `major_revision` decision that was then answered in `.gpd/AUTHOR-RESPONSE.md` and `.gpd/paper/REFEREE_RESPONSE.md`.",
-    "The revised manuscript now uses the actual `artifacts/aristotle-proof-gap-analysis/...` paths, adds Lean 4 and mathlib citations, and includes a theorem-to-source mapping table."
+    "The revised manuscript now uses the actual `artifacts/aristotle-proof-gap-analysis/...` paths, adds Lean 4 and mathlib citations, and includes a theorem-to-source mapping table.",
+    "Phase 4 produced a metadata-aligned `paper/main.pdf`, a complete `paper/submission-metadata.md`, and a verified `paper/submission.tar.gz` that matches `paper/submission-manifest.txt`."
   ],
   "open_questions": [
-    "Should the surrogate hardware-noise section remain in the main text for the ePrint version or move fully to an appendix in the venue-targeted revision?",
-    "What Phase 4 submission metadata and packaging details still need manual completion once LaTeX compilation is available?"
+    "Should the surrogate hardware-noise section remain in the main text for the ePrint version or move fully to an appendix in the venue-targeted revision?"
   ],
   "performance_metrics": {
     "rows": [
@@ -880,6 +880,12 @@
         "duration": "one session",
         "tasks": "strict preflight + staged panel + revision pass",
         "files": "20+"
+      },
+      {
+        "label": "Phase 4 submission prep",
+        "duration": "one session",
+        "tasks": "build validation + metadata sync + archive verification",
+        "files": "10+"
       }
     ]
   },
@@ -928,6 +934,11 @@
       "phase": "quick-3",
       "summary": "Quick task 3: reviewed unstaged GPD metadata changes, removed backup artifact, and committed the cleanup",
       "rationale": "Ad-hoc housekeeping completed outside planned phases"
+    },
+    {
+      "phase": "4",
+      "summary": "IACR ePrint preparation is complete locally with a synchronized metadata record, a rebuilt first-page-complete PDF, and a verified submission tarball.",
+      "rationale": null
     }
   ],
   "approximations": [],
@@ -961,7 +972,7 @@
   ],
   "session": {
     "last_date": "2026-04-04",
-    "stopped_at": "Ready to start Phase 4 submission-preparation planning on the internally reviewed manuscript package",
+    "stopped_at": "Local Phase 4 package complete; next manual step is browser upload to IACR ePrint using `paper/submission-metadata.md`",
     "resume_file": "`.gpd/ROADMAP.md`"
   },
   "_version": 1,

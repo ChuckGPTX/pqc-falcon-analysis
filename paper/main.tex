@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 
 \title{Machine-Checked Proof Gaps in the FALCON-512 EUF-CMA Reduction\\\large A Lean 4 Formalization of Explicit Concrete-Security Losses}
-\author{Working Draft}
+\author{Chuck Crawley\\Independent Researcher\\\texttt{chuckgptx@gmail.com}}
 \date{April 4, 2026}
 
 \begin{document}
@@ -19,6 +19,8 @@ We present a Lean 4 formalization of the FALCON-512 EUF-CMA security reduction t
 \]
 so that approximation losses, oracle-programming losses, and implementation-sensitive terms appear as named objects rather than as hidden prose assumptions. We classify all twelve machine-checked gaps by severity and identify two as decisive for concrete security interpretation: GAP~7, where a naive R\'{e}nyi-to-total-variation conversion yields an approximately 32-bit degradation path, and GAP~10, where random-oracle programming contributes a $Q_H$ loss that pushes the underlying NTRU-SIS hardness target to roughly 192 bits for 128-bit forgery security in the stated model. We also report a supporting surrogate-model stress test based on a noisy quantum-sampler thought experiment, but keep that result explicitly secondary: it does not construct a forgery attack and does not imply that deployed Falcon implementations are broken. The contribution of this paper is therefore not a new exploit, but a machine-checked accounting of where concrete security is lost, what assumptions must stay visible, and which parts of the FALCON proof story are genuinely load-bearing.
 \end{abstract}
+
+\noindent\textbf{Keywords:} FALCON; FN-DSA; post-quantum cryptography; Lean 4; formal verification; lattice signatures; EUF-CMA; proof gaps; Mathlib4; concrete security.
 
 \section{Introduction}
 
